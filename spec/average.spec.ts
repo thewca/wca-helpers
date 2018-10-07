@@ -1,5 +1,4 @@
-const Ao5 = require('../lib/index').Ao5;
-const Mo3 = require('../lib/index').Mo3;
+import { Ao5, Mo3 } from '../src/helpers/average';
 
 describe("Average Helper", function() {
 
