@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && jasmine",
     "build": "tsc"
   },
   "repository": {
@@ -28,6 +28,7 @@
     }
   ],
   "devDependencies": {
+    "jasmine": "^3.2.0",
     "typescript": "^3.1.1"
   }
 }

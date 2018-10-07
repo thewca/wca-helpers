@@ -23,10 +23,10 @@ export function Ao5(results: AttemptResult[]): AttemptResult | null {
   let best = Math.min(...comparableResults);
   let worst = Math.max(...comparableResults);
 
-  delete results[results.indexOf(best)];
-  delete results[results.indexOf(worst)];
+  delete comparableResults[comparableResults.indexOf(best)];
+  delete comparableResults[comparableResults.indexOf(worst)];
 
-  return results.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3;
+  return Math.round(comparableResults.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3);
 }
 
 export function Mo3(results: AttemptResult[]): AttemptResult | null {
@@ -41,5 +41,5 @@ export function Mo3(results: AttemptResult[]): AttemptResult | null {
     return -1;
   }
 
-  return results.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3;
+  return Math.round(results.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3);
 }
