@@ -1,5 +1,6 @@
 import { EventId } from "./eventId";
 import { AttemptResult } from "./attemptResult";
+import { RankingType } from "./rankingType";
 
 export interface PersonalBest {
   eventId: EventId;
@@ -7,5 +8,5 @@ export interface PersonalBest {
   worldRanking: number;
   continentalRanking: number;
   nationalRanking: number;
-  type: 'single' | 'average';
+  type: RankingType;
 }

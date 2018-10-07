@@ -1,4 +1,4 @@
-import { RoundFormat } from "../models";
+import { RoundFormat, RankingType } from "../models";
 
 export function getFormatName(format: RoundFormat): string {
   switch (format) {
@@ -10,12 +10,12 @@ export function getFormatName(format: RoundFormat): string {
   }
 }
 
-export function getFormatRanking(format: RoundFormat): ('single' | 'average')[] {
+export function getFormatRanking(format: RoundFormat): RankingType[] {
   switch (format) {
     case '1':
     case '2':
     case '3':
-      return ['single', 'average'];
+      return ['single'];
     case 'a':
     case 'm':
       return ['average', 'single'];

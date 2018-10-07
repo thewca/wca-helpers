@@ -22,3 +22,4 @@ export * from './room';
 export * from './venue';
 export * from './schedule';
 export * from './wcaId';
+export * from './rankingType';
