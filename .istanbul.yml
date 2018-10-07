@@ -1,2 +1,4 @@
 instrumentation:
-  root: lib
+  root: src
+  embed-source: true
+  include-all-sources: true
