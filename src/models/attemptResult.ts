@@ -1,1 +1,1 @@
-export type AttemptResult = number;
+export type AttemptResult = number | string; // have to include string for MBLD results
