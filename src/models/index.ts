@@ -21,3 +21,4 @@ export * from './activity';
 export * from './room';
 export * from './venue';
 export * from './schedule';
+export * from './wcaId';
