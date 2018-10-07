@@ -4,7 +4,7 @@ export * from './result';
 export * from './qualification';
 export * from './advancementCondition';
 export * from './cutoff';
-export * from './timelimit';
+export * from './timeLimit';
 export * from './roundFormat';
 export * from './scramble';
 export * from './scrambleSet';
