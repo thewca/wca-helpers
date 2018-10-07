@@ -1,5 +1,5 @@
 import { RoundFormat } from "./roundFormat";
-import { TimeLimit } from "./timelimit";
+import { TimeLimit } from "./timeLimit";
 import { Cutoff } from "./cutoff";
 import { AdvancementCondition } from "./advancementCondition";
 import { Result } from "./result";
