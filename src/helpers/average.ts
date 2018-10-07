@@ -26,7 +26,11 @@ export function Ao5(results: AttemptResult[]): AttemptResult | null {
   delete comparableResults[comparableResults.indexOf(best)];
   delete comparableResults[comparableResults.indexOf(worst)];
 
-  return Math.round(comparableResults.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3);
+  let avg = Math.round(comparableResults.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3);
+  if (avg > 60000) {
+    avg = Math.round(avg / 100) * 100;
+  }
+  return avg;
 }
 
 export function Mo3(results: AttemptResult[]): AttemptResult | null {
@@ -41,5 +45,9 @@ export function Mo3(results: AttemptResult[]): AttemptResult | null {
     return -1;
   }
 
-  return Math.round(results.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3);
+  let avg = Math.round(results.reduce((a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10), 0) as number / 3);
+  if (avg > 60000) {
+    avg = Math.round(avg / 100) * 100;
+  }
+  return avg;
 }
