@@ -1,4 +1,5 @@
 import { AttemptResult } from "../models/attemptResult";
+import { formatCentiseconds } from './time';
 
 type DnfMultiResult = { isDnf: true };
 type DnsMultiResult = { isDns: true };
@@ -52,6 +53,19 @@ export function isMultiResultDnf(result: DecodedMultiResult): boolean {
   let notSolved = result.attempted - solved;
   if (solved - notSolved < 0) return true;
   return false;
+}
+
+export function formatMultiResult(result: DecodedMultiResult): string {
+  if (isDnfMultiResult(result)) return 'DNF';
+  if (isDnsMultiResult(result)) return 'DNS';
+  if (isMultiResultDnf(result)) return 'DNF';
+
+  let formatted = `${result.solved}/${result.attempted}`;
+  if (result.centiseconds && result.centiseconds !== 9999900) {
+    let fcs = formatCentiseconds(result.centiseconds);
+    formatted += ` ${ fcs.substring(0, fcs.length - 3) }`; // chop off the decimal part
+  }
+  return formatted;
 }
 
 function isDnfMultiResult(result: DecodedMultiResult): result is DnfMultiResult {
