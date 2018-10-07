@@ -3,3 +3,4 @@ export * from './format';
 export * from './event';
 export * from './result';
 export * from './average';
+export * from './ranking';
