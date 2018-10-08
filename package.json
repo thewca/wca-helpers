@@ -1,7 +1,10 @@
 {
-  "name": "wca-helpers",
-  "version": "1.0.0",
+  "name": "@wca/helpers",
+  "version": "1.0.0-alpha.0",
   "description": "Helpers and class definitions for WCA and WCIF",
+  "keywords": [
+    "wca", "World Cube Association", "WCIF"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
