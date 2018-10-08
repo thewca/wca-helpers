@@ -85,5 +85,7 @@ describe("Result helper", function() {
     expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 10000 })).toEqual('3/5 1:40');
     expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 10001 })).toEqual('3/5 1:40');
     expect(formatMultiResult({ solved: 25, attempted: 25, centiseconds: 360000 })).toEqual('25/25 60:00');
+    expect(formatMultiResult({ isDnf: true })).toEqual('DNF');
+    expect(formatMultiResult({ isDns: true })).toEqual('DNS');
   });
 });
