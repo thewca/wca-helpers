@@ -277,6 +277,7 @@ describe('Ranking Helper', function() {
         createResult(12, [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
         createResult(13, [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
         createResult(14, [2000, 4000]),               // AVG: null, B: 2000, R: 14 (didn't make cutoff)
+        createResult(15, [-1, -1]),                   // AVG: null, B: DNF, R: 15 (didn't make cutoff)
       ];
 
       let rankedResults = rank(results, ['average', 'single']);
@@ -322,6 +323,9 @@ describe('Ranking Helper', function() {
 
       expect(rankedResults[13].personId).toBe(14);
       expect(rankedResults[13]).toHaveRanking(14);
+
+      expect(rankedResults[14].personId).toBe(15);
+      expect(rankedResults[14]).toHaveRanking(15);
     });
 
   });
