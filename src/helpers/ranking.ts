@@ -13,7 +13,7 @@ export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
     if (rankingOrder.indexOf('average') > -1) {
       let average = r.attempts.length === 5 ? Ao5(plain): Mo3(plain);
       if (average as number < 0) {
-        average = Number.MAX_VALUE - (average == -1 ? 2 : 1);
+        average = Number.MAX_VALUE; // average can only be DNF, so no need to distinguish between DNF and DNS
       }
       averageCache[r.personId] = average;
     }
