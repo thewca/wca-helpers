@@ -261,5 +261,64 @@ describe('Ranking Helper', function() {
       expect(rankedResults[1].personId).toBe(1);
     });
 
+    it('ranks a full result correctly', function() {
+      let results: Result[] = [
+        createResult(1,  [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
+        createResult(2,  [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
+        createResult(3,  [400, 500, 600, 700, 800]),  // AVG: 600, B: 400, R: 2
+        createResult(4,  [600, 700, 800, 900, 1000]), // AVG: 800, B: 600: R: 10=
+        createResult(5,  [550, 650, 750, 850, 950]),  // AVG: 750, B: 550, R: 9
+        createResult(6,  [450, 550, 650, 750, 850]),  // AVG: 650, B: 450, R: 3
+        createResult(7,  [600, 600, 700, 800, 800]),  // AVG: 700, B: 600, R: 8
+        createResult(8,  [500, 600, 700, -1, -1]),    // AVG: -1, B: 500, R: 12
+        createResult(9,  [-1, -1, 700, 800, 900]),    // AVG: -1, B: 700, R: 13
+        createResult(10, [-1, 600, 700, 800, 900]),   // AVG: 800, B: 600, R: 10=
+        createResult(11, [510, 520, 530, 540, 550]),  // AVG: 530, B: 510, R: 1
+        createResult(12, [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
+        createResult(13, [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
+      ];
+
+      let rankedResults = rank(results, ['average', 'single']);
+      
+      expect(rankedResults[0].personId).toBe(11);
+      expect(rankedResults[0]).toHaveRanking(1);
+
+      expect(rankedResults[1].personId).toBe(3);
+      expect(rankedResults[1]).toHaveRanking(2);
+
+      expect(rankedResults[2].personId).toBe(6);
+      expect(rankedResults[2]).toHaveRanking(3);
+
+      expect(rankedResults[3].personId).toBe(2);
+      expect(rankedResults[3]).toHaveRanking(4);
+
+      expect(rankedResults[4].personId).toBe(13);
+      expect(rankedResults[4]).toHaveRanking(4);
+
+      expect(rankedResults[5].personId).toBe(1);
+      expect(rankedResults[5]).toHaveRanking(6);
+
+      expect(rankedResults[6].personId).toBe(12);
+      expect(rankedResults[6]).toHaveRanking(6);
+
+      expect(rankedResults[7].personId).toBe(7);
+      expect(rankedResults[7]).toHaveRanking(8);
+
+      expect(rankedResults[8].personId).toBe(5);
+      expect(rankedResults[8]).toHaveRanking(9);
+
+      expect(rankedResults[9].personId).toBe(4);
+      expect(rankedResults[9]).toHaveRanking(10);
+
+      expect(rankedResults[10].personId).toBe(10);
+      expect(rankedResults[10]).toHaveRanking(10);
+
+      expect(rankedResults[11].personId).toBe(8);
+      expect(rankedResults[11]).toHaveRanking(12);
+
+      expect(rankedResults[12].personId).toBe(9);
+      expect(rankedResults[12]).toHaveRanking(13);
+    });
+
   });
 });

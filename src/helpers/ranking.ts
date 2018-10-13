@@ -11,7 +11,11 @@ export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
   results.forEach(r => {
     let plain = r.attempts.map(a => a.result);
     if (rankingOrder.indexOf('average') > -1) {
-      averageCache[r.personId] = r.attempts.length === 5 ? Ao5(plain): Mo3(plain);
+      let average = r.attempts.length === 5 ? Ao5(plain): Mo3(plain);
+      if (average as number < 0) {
+        average = Number.MAX_VALUE - (average == -1 ? 2 : 1);
+      }
+      averageCache[r.personId] = average;
     }
     bestCache[r.personId] = Math.min(...plain.map(x => parseInt(`${x}`, 10)).filter(x => x > 0));
   });
