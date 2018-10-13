@@ -17,7 +17,10 @@ export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
       }
       averageCache[r.personId] = average;
     }
-    bestCache[r.personId] = Math.min(...plain.map(x => parseInt(`${x}`, 10)).filter(x => x > 0));
+    let valid = plain.map(x => parseInt(`${x}`, 10)).filter(x => x > 0);
+    if (valid.length > 0) {
+      bestCache[r.personId] = Math.min(...valid);
+    }
   });
 
   // then order the results
