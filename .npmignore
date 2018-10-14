@@ -1,7 +1,0 @@
-src
-spec
-coverage
-tsconfig.json
-tslint.json
-.prettierrc
-.travis.yml

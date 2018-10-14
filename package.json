@@ -9,10 +9,16 @@
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "ts-node node_modules/jasmine/bin/jasmine.js",
     "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" node_modules/jasmine/bin/jasmine.js",
-    "build": "tsc"
+    "build": "tsc",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
