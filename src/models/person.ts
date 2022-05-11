@@ -13,7 +13,7 @@ export interface Person {
   birthdate?: string;
   email?: string;
   avatar?: Avatar | null;
-  roles?: ('delegate' | 'organiser')[] | null;
+  roles?: ('delegate' | 'trainee-delegate' | 'organizer' | string)[] | null;
   registration?: Registration | null;
   assignments?: Assignment[] | null;
   personalBests?: PersonalBest[] | null;
