@@ -2,6 +2,7 @@ import { Avatar } from "./avatar";
 import { Registration } from "./registration";
 import { Assignment } from "./assignment";
 import { PersonalBest } from "./personalBest";
+import { Role } from "./role";
 
 export interface Person {
   registrantId: number;
@@ -13,7 +14,7 @@ export interface Person {
   birthdate?: string;
   email?: string;
   avatar?: Avatar | null;
-  roles?: ('delegate' | 'trainee-delegate' | 'organizer' | string)[] | null;
+  roles?: Role[] | null;
   registration?: Registration | null;
   assignments?: Assignment[] | null;
   personalBests?: PersonalBest[] | null;
