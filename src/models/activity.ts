@@ -1,3 +1,5 @@
+import { Extension } from "./extension";
+
 export interface Activity {
   id: number;
   name: string;
@@ -6,4 +8,5 @@ export interface Activity {
   endTime: string;
   childActivities?: Activity[] | null;
   scrambleSetId?: number | null;
+  extensions: Extension[]
 }
