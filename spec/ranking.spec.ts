@@ -29,7 +29,7 @@ let customMatchers: CustomMatcherFactories = {
 };
 
 function createResult(personId: number, plain: number[]): Result {
-  let r: Result = { personId: personId, attempts: [] };
+  let r: Result = { personId: personId, attempts: [], best: 0, average: 0 };
   plain.forEach(p => r.attempts.push({ result: p }));
   return r;
 }
@@ -42,7 +42,7 @@ describe('Ranking Helper', function() {
       beforeEach(function() {
         jasmine.addMatchers(customMatchers);
       });
-  
+
       it('ranks 2 people with the same average the same', function() {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
@@ -52,7 +52,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[0]).toHaveRanking(1);
         expect(rankedResults[1]).toHaveRanking(1);
       });
-  
+
       it('ranks 2 people with a different average differently', function() {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
@@ -64,7 +64,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[1]).toHaveRanking(2);
         expect(rankedResults[1].personId).toBe(2);
       });
-  
+
       it('ranks 2 people with the same average the same when not in first position', function() {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
@@ -77,7 +77,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[1]).toHaveRanking(2);
         expect(rankedResults[2]).toHaveRanking(2);
       });
-  
+
       it('ranks 2 people with a different average differently when not in first position', function() {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
@@ -98,7 +98,7 @@ describe('Ranking Helper', function() {
       beforeEach(function() {
         jasmine.addMatchers(customMatchers);
       });
-  
+
       it('ranks 2 people with the same average the same', function() {
         let results: Result[] = [
           createResult(1, [ 3, 5, 7]),
@@ -108,7 +108,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[0]).toHaveRanking(1);
         expect(rankedResults[1]).toHaveRanking(1);
       });
-  
+
       it('ranks 2 people with a different average differently', function() {
         let results: Result[] = [
           createResult(1, [ 3, 5, 7 ]),
@@ -120,7 +120,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[1]).toHaveRanking(2);
         expect(rankedResults[1].personId).toBe(2);
       });
-  
+
       it('ranks 2 people with the same average the same when not in first position', function() {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
@@ -133,7 +133,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[1]).toHaveRanking(2);
         expect(rankedResults[2]).toHaveRanking(2);
       });
-  
+
       it('ranks 2 people with a different average differently when not in first position', function() {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
@@ -281,7 +281,7 @@ describe('Ranking Helper', function() {
       ];
 
       let rankedResults = rank(results, ['average', 'single']);
-      
+
       expect(rankedResults[0].personId).toBe(11);
       expect(rankedResults[0]).toHaveRanking(1);
 
