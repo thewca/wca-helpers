@@ -1,6 +1,6 @@
 {
   "name": "@wca/helpers",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Helpers and class definitions for WCA and WCIF",
   "keywords": [
     "wca",
