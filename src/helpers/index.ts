@@ -5,3 +5,4 @@ export * from './result';
 export * from './average';
 export * from './ranking';
 export * from './time';
+export * from './activity';
