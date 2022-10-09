@@ -1,7 +1,7 @@
 import { AssignmentCode } from "./assignmentCode";
 
 export interface Assignment {
-  activityId: string;
+  activityId: number;
   stationNumber?: number;
   assignmentCode: AssignmentCode;
 }
