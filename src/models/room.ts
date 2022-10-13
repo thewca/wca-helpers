@@ -4,7 +4,7 @@ import { Extension } from "./extension";
 export interface Room {
   id: number;
   name: string;
-  color: string;
+  color: `#${string}`;
   activities: Activity[];
   extensions: Extension[];
 }
