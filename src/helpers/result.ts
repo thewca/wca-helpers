@@ -87,30 +87,35 @@ function isDnsMultiResult(
 }
 
 function decodeOldMultiResult(result: AttemptResult): DecodedMultiResult {
-  let r = result.toString();
-  let ss = parseInt(r.substring(1, 3), 10);
-  let aa = parseInt(r.substring(3, 5), 10);
-  let tt = parseInt(r.substring(5, 10), 10);
+  // Handles DNF and DNS
+  if (result <= 0) return { solved: 0, attempted: 0, centiseconds: result };
 
-  let res: ValidMultiResult = { attempted: aa, solved: 99 - ss };
-  if (tt !== 99999) {
-    res.centiseconds = tt * 100;
+  
+  const seconds = result % 1e5;
+  const AA = Math.floor(result / 1e5) % 100;
+  const SS = (Math.floor(result / 1e7) % 100);
+  const solved = 99 - SS;
+  const res: DecodedMultiResult = { solved, attempted: AA };
+  if (seconds < 99999) {
+    res.centiseconds = seconds * 100;
   }
+  
   return res;
 }
 
 function decodeNewMultiResult(result: AttemptResult): DecodedMultiResult {
-  let r = result.toString();
-  let dd = parseInt(r.substring(0, 2), 10);
-  let tt = parseInt(r.substring(2, 7), 10);
-  let mm = parseInt(r.substring(7, 9), 10);
-  let difference = 99 - dd;
-  let solved = difference + mm;
-  let attempted = solved + mm;
-
-  let res: ValidMultiResult = { attempted: attempted, solved: solved };
-  if (tt !== 99999) {
-    res.centiseconds = tt * 100;
+  // Handles DNF and DNS
+  if (result <= 0) return { solved: 0, attempted: 0, centiseconds: result };
+  
+  const missed = result % 100;
+  const seconds = Math.floor(result / 100) % 1e5;
+  const points = 99 - (Math.floor(result / 1e7) % 100);
+  const solved = points + missed;
+  const attempted = solved + missed;
+  const res: DecodedMultiResult = { solved, attempted };
+  if (seconds < 99999) {
+    res.centiseconds = seconds * 100;
   }
+  
   return res;
 }
