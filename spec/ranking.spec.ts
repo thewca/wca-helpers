@@ -29,8 +29,14 @@ let customMatchers: CustomMatcherFactories = {
 };
 
 function createResult(personId: number, plain: number[]): Result {
-  let r: Result = { personId: personId, attempts: [], best: 0, average: 0 };
-  plain.forEach(p => r.attempts.push({ result: p }));
+  let r: Result = {
+    personId: personId, attempts: [], best: 0, average: 0,
+    ranking: null
+  };
+  plain.forEach(p => r.attempts.push({
+    result: p,
+    reconstruction: null
+  }));
   return r;
 }
 
