@@ -4,8 +4,10 @@ import { Assignment } from "./assignment";
 import { PersonalBest } from "./personalBest";
 import { Role } from "./role";
 
+export type RegistrantId = number;
+
 export interface Person {
-  registrantId: number;
+  registrantId: RegistrantId;
   name: string;
   wcaUserId: number;
   wcaId?: string | null;
@@ -14,8 +16,8 @@ export interface Person {
   birthdate?: string;
   email?: string;
   avatar?: Avatar | null;
-  roles?: Role[] | null;
+  roles?: Role[];
   registration?: Registration | null;
-  assignments?: Assignment[] | null;
-  personalBests?: PersonalBest[] | null;
+  assignments?: Assignment[];
+  personalBests?: PersonalBest[];
 }
