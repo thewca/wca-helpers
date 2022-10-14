@@ -14,7 +14,7 @@ describe("Average Helper", function() {
     });
 
     it("Returns null when encountering MBLD results", function() {
-      let attempts = [ 1000, 1000, 1000, 1000, "0800360000" ];
+      let attempts = [ 1000, 1000, 1000, 1000, 800360000 ];
       expect(Ao5(attempts)).toBeNull();
     });
 
@@ -81,7 +81,7 @@ describe("Average Helper", function() {
     });
 
     it("Returns null when encountering MBLD results", function() {
-      let attempts = [ 1000, 1000, "0800360000" ];
+      let attempts = [ 1000, 1000, 800360000 ];
       expect(Mo3(attempts)).toBeNull();
     });
 

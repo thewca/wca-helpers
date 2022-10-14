@@ -26,7 +26,7 @@ describe("Result helper", function() {
   });
 
   it("Correctly identifies new style MBLD result", function() {
-    expect(isMultiResult('0970360002')).toBeTruthy();
+    expect(isMultiResult(970360002)).toBeTruthy();
   });
 
   it("Correctly identifies non MBLD results", function() {
@@ -54,7 +54,7 @@ describe("Result helper", function() {
   });
 
   it("Correctly decodes new style multi result", function() {
-    expect(decodeMultiResult('0970360002')).toEqual({
+    expect(decodeMultiResult(970360002)).toEqual({
       solved: 4,
       attempted: 6,
       centiseconds: 360000
@@ -73,52 +73,46 @@ describe("Result helper", function() {
     expect(encodeMultiResult({
       solved: 4,
       attempted: 6,
-      centiseconds: 360000
-    })).toEqual('0970360002');
+      centiseconds: 360000,
+    })).toEqual(970360002);
   });
 
   it("Correctly encodes MBLD result as DNF", function() {
-    expect(encodeMultiResult({ isDnf: true })).toEqual('-1');
-    expect(encodeMultiResult({ solved: 1, attempted: 2, centiseconds: 10000 })).toEqual('-1');
-    expect(encodeMultiResult({ solved: 2, attempted: 5, centiseconds: 10000 })).toEqual('-1');
+    expect(encodeMultiResult({ isDnf: true })).toEqual(-1);
+    expect(encodeMultiResult({ solved: 1, attempted: 2, centiseconds: 10000 })).toEqual(-1);
+    expect(encodeMultiResult({ solved: 2, attempted: 5, centiseconds: 10000 })).toEqual(-1);
   });
 
   it("Correctly encodes MBLD result as DNS", function() {
-    expect(encodeMultiResult({ isDns: true })).toEqual('-2');
+    expect(encodeMultiResult({ isDns: true })).toEqual(-2);
   });
 
   it("Correctly encodes MBLD result with missing time", function() {
     expect(encodeMultiResult({
       solved: 4,
-      attempted: 6
-    })).toEqual('0979999902');
+      attempted: 6 })
+    ).toEqual(979999902);
   });
 
   it("Correctly formats a MBLD result", function() {
-    expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 10000 })).toEqual('3/5 1:40');
-    expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 10001 })).toEqual('3/5 1:40');
-    expect(formatMultiResult({ solved: 25, attempted: 25, centiseconds: 360000 })).toEqual('25/25 60:00');
-    expect(formatMultiResult({ isDnf: true })).toEqual('DNF');
-    expect(formatMultiResult({ isDns: true })).toEqual('DNS');
-    expect(formatMultiResult({ solved: 2, attempted: 5, centiseconds: 10000 })).toEqual('DNF');
+    expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 10000 })).toEqual("3/5 1:40");
+    expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 10001 })).toEqual("3/5 1:40");
+    expect(formatMultiResult({ solved: 25, attempted: 25, centiseconds: 360000 })).toEqual("25/25 60:00");
+    expect(formatMultiResult({ isDnf: true })).toEqual("DNF");
+    expect(formatMultiResult({ isDns: true })).toEqual("DNS");
+    expect(formatMultiResult({ solved: 2, attempted: 5, centiseconds: 10000 })).toEqual("DNF");
   });
 
   it("Correctly formats a MBLD result with unknown time", function() {
-    expect(formatMultiResult({ solved: 3, attempted: 5 })).toEqual('3/5');
-    expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 9999900 })).toEqual('3/5');
+    expect(formatMultiResult({ solved: 3, attempted: 5 })).toEqual("3/5");
+    expect(formatMultiResult({ solved: 3, attempted: 5, centiseconds: 9999900 })).toEqual("3/5");
   });
 
   it("Correctly decodes old style multi result with unknown time", function() {
-    expect(decodeMultiResult(1980399999)).toEqual({
-      solved: 1,
-      attempted: 3
-    });
+    expect(decodeMultiResult(1980399999)).toEqual({ solved: 1,attempted: 3 });
   });
 
   it("Correctly decodes new style multi result", function() {
-    expect(decodeMultiResult('0979999902')).toEqual({
-      solved: 4,
-      attempted: 6
-    });
+    expect(decodeMultiResult(979999902)).toEqual({ solved: 4, attempted: 6 });
   });
 });
