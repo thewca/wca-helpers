@@ -1,8 +1,8 @@
-import { Avatar } from "./avatar";
-import { Registration } from "./registration";
-import { Assignment } from "./assignment";
-import { PersonalBest } from "./personalBest";
-import { Role } from "./role";
+import { Avatar } from './avatar';
+import { Registration } from './registration';
+import { Assignment } from './assignment';
+import { PersonalBest } from './personalBest';
+import { Role } from './role';
 
 export type RegistrantId = number;
 

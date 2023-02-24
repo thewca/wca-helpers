@@ -1,7 +1,7 @@
-import { Person } from "./person";
+import { Person } from './person';
 import { Event } from './event';
-import { Schedule } from "./schedule";
-import { Extension } from "./extension";
+import { Schedule } from './schedule';
+import { Extension } from './extension';
 
 export interface Competition {
   formatVersion: string;

@@ -1,12 +1,17 @@
-import { RoundFormat, RankingType } from "../models";
+import { RoundFormat, RankingType } from '../models';
 
 export function getFormatName(format: RoundFormat): string {
   switch (format) {
-    case '1': return 'Best of 1';
-    case '2': return 'Best of 2';
-    case '3': return 'Best of 3';
-    case 'a': return 'Average of 5';
-    case 'm': return 'Mean of 3';
+    case '1':
+      return 'Best of 1';
+    case '2':
+      return 'Best of 2';
+    case '3':
+      return 'Best of 3';
+    case 'a':
+      return 'Average of 5';
+    case 'm':
+      return 'Mean of 3';
   }
 }
 
@@ -24,11 +29,16 @@ export function getFormatRanking(format: RoundFormat): RankingType[] {
 
 export function getFormatExpectedSolves(format: RoundFormat): number {
   switch (format) {
-    case '1': return 1;
-    case '2': return 2;
-    case '3': return 3;
-    case 'a': return 5;
-    case 'm': return 3;
+    case '1':
+      return 1;
+    case '2':
+      return 2;
+    case '3':
+      return 3;
+    case 'a':
+      return 5;
+    case 'm':
+      return 3;
   }
 }
 

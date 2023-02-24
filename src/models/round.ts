@@ -1,11 +1,11 @@
-import { RoundFormat } from "./roundFormat";
-import { TimeLimit } from "./timeLimit";
-import { Cutoff } from "./cutoff";
-import { AdvancementCondition } from "./advancementCondition";
-import { Result } from "./result";
-import { ScrambleSet } from "./scrambleSet";
-import { Extension } from "./extension";
-import { ActivityCode } from "./activity";
+import { RoundFormat } from './roundFormat';
+import { TimeLimit } from './timeLimit';
+import { Cutoff } from './cutoff';
+import { AdvancementCondition } from './advancementCondition';
+import { Result } from './result';
+import { ScrambleSet } from './scrambleSet';
+import { Extension } from './extension';
+import { ActivityCode } from './activity';
 
 export interface Round {
   id: ActivityCode;
