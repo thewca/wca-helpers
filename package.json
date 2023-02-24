@@ -16,7 +16,7 @@
     "test": "npm run prettier && ts-node node_modules/jasmine/bin/jasmine.js",
     "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" node_modules/jasmine/bin/jasmine.js",
     "format": "prettier --write \"**/*.{ts,js}\"",
-    "format:write": "prettier --write \"**/*.{ts,js}\"",
+    "format:check": "prettier --check \"**/*.{ts,js}\"",
     "build": "tsc",
     "preversion": "npm test",
     "postversion": "git push && git push --tags",
