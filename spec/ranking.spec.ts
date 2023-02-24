@@ -7,9 +7,9 @@ import CustomMatcherFactories = jasmine.CustomMatcherFactories;
 import CustomMatcherResult = jasmine.CustomMatcherResult;
 
 let customMatchers: CustomMatcherFactories = {
-  toHaveRanking: function(util, customEqTesters) {
+  toHaveRanking: function (util) {
     return {
-      compare: function(actual: Result, expected: number) {
+      compare: function (actual: Result, expected: number) {
         var result: CustomMatcherResult = {
           pass: false
         };
@@ -19,7 +19,7 @@ let customMatchers: CustomMatcherFactories = {
           if (!actual.hasOwnProperty('ranking')) {
             result.pass = false;
           } else {
-            result.pass = util.equals(actual.ranking, expected, customEqTesters);
+            result.pass = util.equals(actual.ranking, expected);
           }
         }
         return result;
@@ -40,16 +40,16 @@ function createResult(personId: number, plain: number[]): Result {
   return r;
 }
 
-describe('Ranking Helper', function() {
+describe('Ranking Helper', function () {
 
-  describe('Average only', function() {
+  describe('Average only', function () {
 
-    describe('Ao5', function() {
-      beforeEach(function() {
+    describe('Ao5', function () {
+      beforeEach(function () {
         jasmine.addMatchers(customMatchers);
       });
 
-      it('ranks 2 people with the same average the same', function() {
+      it('ranks 2 people with the same average the same', function () {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
           createResult(2, [3, 4, 5, 6, 7])
@@ -59,7 +59,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[1]).toHaveRanking(1);
       });
 
-      it('ranks 2 people with a different average differently', function() {
+      it('ranks 2 people with a different average differently', function () {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
           createResult(2, [4, 5, 6, 7, 8])
@@ -71,7 +71,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[1].personId).toBe(2);
       });
 
-      it('ranks 2 people with the same average the same when not in first position', function() {
+      it('ranks 2 people with the same average the same when not in first position', function () {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
           createResult(2, [3, 4, 5, 6, 7]),
@@ -84,7 +84,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[2]).toHaveRanking(2);
       });
 
-      it('ranks 2 people with a different average differently when not in first position', function() {
+      it('ranks 2 people with a different average differently when not in first position', function () {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
           createResult(2, [4, 5, 6, 7, 8]),
@@ -100,25 +100,25 @@ describe('Ranking Helper', function() {
       });
     });
 
-    describe('Mo3', function() {
-      beforeEach(function() {
+    describe('Mo3', function () {
+      beforeEach(function () {
         jasmine.addMatchers(customMatchers);
       });
 
-      it('ranks 2 people with the same average the same', function() {
+      it('ranks 2 people with the same average the same', function () {
         let results: Result[] = [
-          createResult(1, [ 3, 5, 7]),
-          createResult(2, [ 4, 5, 6])
+          createResult(1, [3, 5, 7]),
+          createResult(2, [4, 5, 6])
         ];
         let rankedResults = rank(results, ['average']);
         expect(rankedResults[0]).toHaveRanking(1);
         expect(rankedResults[1]).toHaveRanking(1);
       });
 
-      it('ranks 2 people with a different average differently', function() {
+      it('ranks 2 people with a different average differently', function () {
         let results: Result[] = [
-          createResult(1, [ 3, 5, 7 ]),
-          createResult(2, [ 5, 6, 7 ])
+          createResult(1, [3, 5, 7]),
+          createResult(2, [5, 6, 7])
         ];
         let rankedResults = rank(results, ['average']);
         expect(rankedResults[0]).toHaveRanking(1);
@@ -127,7 +127,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[1].personId).toBe(2);
       });
 
-      it('ranks 2 people with the same average the same when not in first position', function() {
+      it('ranks 2 people with the same average the same when not in first position', function () {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
           createResult(2, [4, 5, 6]),
@@ -140,7 +140,7 @@ describe('Ranking Helper', function() {
         expect(rankedResults[2]).toHaveRanking(2);
       });
 
-      it('ranks 2 people with a different average differently when not in first position', function() {
+      it('ranks 2 people with a different average differently when not in first position', function () {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
           createResult(2, [5, 6, 7]),
@@ -157,13 +157,13 @@ describe('Ranking Helper', function() {
     });
   });
 
-  describe('Single only', function() {
+  describe('Single only', function () {
 
-    beforeEach(function() {
+    beforeEach(function () {
       jasmine.addMatchers(customMatchers);
     });
 
-    it('ranks 2 people with the same best the same', function() {
+    it('ranks 2 people with the same best the same', function () {
       let results: Result[] = [
         createResult(1, [1, 3, 5]),
         createResult(2, [3, 2, 1])
@@ -173,7 +173,7 @@ describe('Ranking Helper', function() {
       expect(rankedResults[1]).toHaveRanking(1);
     });
 
-    it('ranks 2 people with different bests differently', function() {
+    it('ranks 2 people with different bests differently', function () {
       let results: Result[] = [
         createResult(1, [2, 3, 5]),
         createResult(2, [3, 2, 1])
@@ -185,7 +185,7 @@ describe('Ranking Helper', function() {
       expect(rankedResults[1].personId).toBe(1);
     });
 
-    it('ranks 2 people with the same best the same when not in first position', function() {
+    it('ranks 2 people with the same best the same when not in first position', function () {
       let results: Result[] = [
         createResult(1, [2, 3, 5]),
         createResult(2, [3, 2, 2]),
@@ -198,7 +198,7 @@ describe('Ranking Helper', function() {
       expect(rankedResults[2]).toHaveRanking(2);
     });
 
-    it('ranks 2 people with different bests differently when not in first position', function() {
+    it('ranks 2 people with different bests differently when not in first position', function () {
       let results: Result[] = [
         createResult(1, [3, 3, 5]),
         createResult(2, [3, 2, 2]),
@@ -215,13 +215,13 @@ describe('Ranking Helper', function() {
 
   });
 
-  describe('Average, then single', function() {
+  describe('Average, then single', function () {
 
-    beforeEach(function() {
+    beforeEach(function () {
       jasmine.addMatchers(customMatchers);
     });
 
-    it('ranks 2 people with the same average and the same best the same', function() {
+    it('ranks 2 people with the same average and the same best the same', function () {
       let results: Result[] = [
         createResult(1, [1, 3, 5, 7, 9]),
         createResult(2, [1, 4, 5, 6, 7])
@@ -231,7 +231,7 @@ describe('Ranking Helper', function() {
       expect(rankedResults[1]).toHaveRanking(1);
     });
 
-    it('ranks 2 people with a different average differently', function() {
+    it('ranks 2 people with a different average differently', function () {
       let results: Result[] = [
         createResult(1, [1, 3, 5, 7, 9]),
         createResult(2, [4, 5, 6, 7, 8])
@@ -243,7 +243,7 @@ describe('Ranking Helper', function() {
       expect(rankedResults[1].personId).toBe(2);
     });
 
-    it('ranks 2 people with a different average but the same best differently', function() {
+    it('ranks 2 people with a different average but the same best differently', function () {
       let results: Result[] = [
         createResult(1, [1, 3, 5, 7, 9]),
         createResult(2, [1, 5, 6, 7, 8])
@@ -255,7 +255,7 @@ describe('Ranking Helper', function() {
       expect(rankedResults[1].personId).toBe(2);
     });
 
-    it('ranks 2 people with the same average but different best differently', function() {
+    it('ranks 2 people with the same average but different best differently', function () {
       let results: Result[] = [
         createResult(1, [2, 3, 5, 7, 9]),
         createResult(2, [1, 4, 5, 6, 7])
@@ -267,17 +267,17 @@ describe('Ranking Helper', function() {
       expect(rankedResults[1].personId).toBe(1);
     });
 
-    it('ranks a full result correctly', function() {
+    it('ranks a full result correctly', function () {
       let results: Result[] = [
-        createResult(1,  [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
-        createResult(2,  [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
-        createResult(3,  [400, 500, 600, 700, 800]),  // AVG: 600, B: 400, R: 2
-        createResult(4,  [600, 700, 800, 900, 1000]), // AVG: 800, B: 600: R: 10=
-        createResult(5,  [550, 650, 750, 850, 950]),  // AVG: 750, B: 550, R: 9
-        createResult(6,  [450, 550, 650, 750, 850]),  // AVG: 650, B: 450, R: 3
-        createResult(7,  [600, 600, 700, 800, 800]),  // AVG: 700, B: 600, R: 8
-        createResult(8,  [500, 600, 700, -1, -1]),    // AVG: -1, B: 500, R: 12
-        createResult(9,  [-1, -1, 700, 800, 900]),    // AVG: -1, B: 700, R: 13
+        createResult(1, [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
+        createResult(2, [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
+        createResult(3, [400, 500, 600, 700, 800]),  // AVG: 600, B: 400, R: 2
+        createResult(4, [600, 700, 800, 900, 1000]), // AVG: 800, B: 600: R: 10=
+        createResult(5, [550, 650, 750, 850, 950]),  // AVG: 750, B: 550, R: 9
+        createResult(6, [450, 550, 650, 750, 850]),  // AVG: 650, B: 450, R: 3
+        createResult(7, [600, 600, 700, 800, 800]),  // AVG: 700, B: 600, R: 8
+        createResult(8, [500, 600, 700, -1, -1]),    // AVG: -1, B: 500, R: 12
+        createResult(9, [-1, -1, 700, 800, 900]),    // AVG: -1, B: 700, R: 13
         createResult(10, [-1, 600, 700, 800, 900]),   // AVG: 800, B: 600, R: 10=
         createResult(11, [510, 520, 530, 540, 550]),  // AVG: 530, B: 510, R: 1
         createResult(12, [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
