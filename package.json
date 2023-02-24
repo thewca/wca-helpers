@@ -13,8 +13,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "npm run prettier && ts-node node_modules/jasmine/bin/jasmine.js",
-    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" node_modules/jasmine/bin/jasmine.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "format": "prettier --write \"**/*.{ts,js}\"",
     "format:check": "prettier --check \"**/*.{ts,js}\"",
     "build": "tsc",
