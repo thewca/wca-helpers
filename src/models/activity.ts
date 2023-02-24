@@ -8,7 +8,7 @@ export interface Activity {
   activityCode: ActivityCode;
   startTime: string;
   endTime: string;
-  childActivities: Activity[] | null;
+  childActivities: Activity[];
   scrambleSetId?: number | null;
-  extensions: Extension[]
+  extensions: Extension[];
 }
