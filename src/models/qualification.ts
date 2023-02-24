@@ -4,21 +4,21 @@ import { RankingType } from "./rankingType";
 interface RankingQualification {
   whenDate: string;
   type: 'ranking';
-  resultType: RankingType
+  resultType: RankingType;
   level: number;
 }
 
 interface AttemptResultQualification {
   when: string;
   type: 'attemptResult';
-  resultType: RankingType
+  resultType: RankingType;
   level: AttemptResult;
 }
 
 interface AnyResultQualificiation {
   when: string;
   type: 'anyResult';
-  resultType: RankingType
+  resultType: RankingType;
   level: AttemptResult;
 }
 
