@@ -7,7 +7,7 @@ expect.extend({
     var result = {
       pass: false,
       message: () => '',
-    }
+    };
 
     if (expected === undefined) {
       result.pass = actual.hasOwnProperty('ranking') && actual.ranking! > 0;
@@ -15,15 +15,17 @@ expect.extend({
     } else {
       if (!actual.hasOwnProperty('ranking')) {
         result.pass = false;
-        result.message = () => `Expected ranking of ${expected} instead got no ranking`;
+        result.message = () =>
+          `Expected ranking of ${expected} instead got no ranking`;
       } else {
         result.pass = actual.ranking === expected;
-        result.message = () => `Expected ranking of ${expected} instead got ${actual.ranking}`;
+        result.message = () =>
+          `Expected ranking of ${expected} instead got ${actual.ranking}`;
       }
     }
 
     return result;
-  }
+  },
 });
 
 declare module 'expect' {
@@ -104,11 +106,10 @@ describe('Ranking Helper', function () {
     });
 
     describe('Mo3', function () {
-
       it('ranks 2 people with the same average the same', function () {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
-          createResult(2, [4, 5, 6])
+          createResult(2, [4, 5, 6]),
         ];
         let rankedResults = rank(results, ['average']);
         expect(rankedResults[0]).toHaveRanking(1);
@@ -118,7 +119,7 @@ describe('Ranking Helper', function () {
       it('ranks 2 people with a different average differently', function () {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
-          createResult(2, [5, 6, 7])
+          createResult(2, [5, 6, 7]),
         ];
         let rankedResults = rank(results, ['average']);
         expect(rankedResults[0]).toHaveRanking(1);
@@ -258,21 +259,21 @@ describe('Ranking Helper', function () {
 
     it('ranks a full result correctly', function () {
       let results: Result[] = [
-        createResult(1, [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
-        createResult(2, [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
-        createResult(3, [400, 500, 600, 700, 800]),  // AVG: 600, B: 400, R: 2
+        createResult(1, [500, 600, 700, 800, 900]), // AVG: 700, B: 500, R: 6=
+        createResult(2, [400, 600, 700, 800, 900]), // AVG: 700, B: 400, R: 4=
+        createResult(3, [400, 500, 600, 700, 800]), // AVG: 600, B: 400, R: 2
         createResult(4, [600, 700, 800, 900, 1000]), // AVG: 800, B: 600: R: 10=
-        createResult(5, [550, 650, 750, 850, 950]),  // AVG: 750, B: 550, R: 9
-        createResult(6, [450, 550, 650, 750, 850]),  // AVG: 650, B: 450, R: 3
-        createResult(7, [600, 600, 700, 800, 800]),  // AVG: 700, B: 600, R: 8
-        createResult(8, [500, 600, 700, -1, -1]),    // AVG: -1, B: 500, R: 12
-        createResult(9, [-1, -1, 700, 800, 900]),    // AVG: -1, B: 700, R: 13
-        createResult(10, [-1, 600, 700, 800, 900]),   // AVG: 800, B: 600, R: 10=
-        createResult(11, [510, 520, 530, 540, 550]),  // AVG: 530, B: 510, R: 1
-        createResult(12, [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
-        createResult(13, [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
-        createResult(14, [2000, 4000]),               // AVG: null, B: 2000, R: 14 (didn't make cutoff)
-        createResult(15, [-1, -1]),                   // AVG: null, B: DNF, R: 15 (didn't make cutoff)
+        createResult(5, [550, 650, 750, 850, 950]), // AVG: 750, B: 550, R: 9
+        createResult(6, [450, 550, 650, 750, 850]), // AVG: 650, B: 450, R: 3
+        createResult(7, [600, 600, 700, 800, 800]), // AVG: 700, B: 600, R: 8
+        createResult(8, [500, 600, 700, -1, -1]), // AVG: -1, B: 500, R: 12
+        createResult(9, [-1, -1, 700, 800, 900]), // AVG: -1, B: 700, R: 13
+        createResult(10, [-1, 600, 700, 800, 900]), // AVG: 800, B: 600, R: 10=
+        createResult(11, [510, 520, 530, 540, 550]), // AVG: 530, B: 510, R: 1
+        createResult(12, [500, 600, 700, 800, 900]), // AVG: 700, B: 500, R: 6=
+        createResult(13, [400, 600, 700, 800, 900]), // AVG: 700, B: 400, R: 4=
+        createResult(14, [2000, 4000]), // AVG: null, B: 2000, R: 14 (didn't make cutoff)
+        createResult(15, [-1, -1]), // AVG: null, B: DNF, R: 15 (didn't make cutoff)
       ];
 
       let rankedResults = rank(results, ['average', 'single']);
