@@ -9,7 +9,6 @@ expect.extend({
       message: () => '',
     }
 
-<<<<<<< HEAD
     if (expected === undefined) {
       result.pass = actual.hasOwnProperty('ranking') && actual.ranking! > 0;
       result.message = () => `Expected ranking to be set`;
@@ -32,33 +31,6 @@ declare module 'expect' {
     toHaveRanking(expected?: number): R;
   }
 }
-=======
-let customMatchers: CustomMatcherFactories = {
-  toHaveRanking: function (util, customEqTesters) {
-    return {
-      compare: function (actual: Result, expected: number) {
-        var result: CustomMatcherResult = {
-          pass: false,
-        };
-        if (expected === undefined) {
-          result.pass = actual.hasOwnProperty('ranking') && actual.ranking! > 0;
-        } else {
-          if (!actual.hasOwnProperty('ranking')) {
-            result.pass = false;
-          } else {
-            result.pass = util.equals(
-              actual.ranking,
-              expected,
-              customEqTesters
-            );
-          }
-        }
-        return result;
-      },
-    };
-  },
-};
->>>>>>> 8b0e074 (Install and run prettier)
 
 function createResult(personId: number, plain: number[]): Result {
   let r: Result = {
@@ -80,13 +52,6 @@ function createResult(personId: number, plain: number[]): Result {
 describe('Ranking Helper', function () {
   describe('Average only', function () {
     describe('Ao5', function () {
-<<<<<<< HEAD
-=======
-      beforeEach(function () {
-        jasmine.addMatchers(customMatchers);
-      });
-
->>>>>>> 8b0e074 (Install and run prettier)
       it('ranks 2 people with the same average the same', function () {
         let results: Result[] = [
           createResult(1, [1, 3, 5, 7, 9]),
@@ -139,21 +104,11 @@ describe('Ranking Helper', function () {
     });
 
     describe('Mo3', function () {
-<<<<<<< HEAD
-=======
-      beforeEach(function () {
-        jasmine.addMatchers(customMatchers);
-      });
->>>>>>> 8b0e074 (Install and run prettier)
 
       it('ranks 2 people with the same average the same', function () {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
-<<<<<<< HEAD
           createResult(2, [4, 5, 6])
-=======
-          createResult(2, [4, 5, 6]),
->>>>>>> 8b0e074 (Install and run prettier)
         ];
         let rankedResults = rank(results, ['average']);
         expect(rankedResults[0]).toHaveRanking(1);
@@ -163,11 +118,7 @@ describe('Ranking Helper', function () {
       it('ranks 2 people with a different average differently', function () {
         let results: Result[] = [
           createResult(1, [3, 5, 7]),
-<<<<<<< HEAD
           createResult(2, [5, 6, 7])
-=======
-          createResult(2, [5, 6, 7]),
->>>>>>> 8b0e074 (Install and run prettier)
         ];
         let rankedResults = rank(results, ['average']);
         expect(rankedResults[0]).toHaveRanking(1);
@@ -207,13 +158,6 @@ describe('Ranking Helper', function () {
   });
 
   describe('Single only', function () {
-<<<<<<< HEAD
-=======
-    beforeEach(function () {
-      jasmine.addMatchers(customMatchers);
-    });
->>>>>>> 8b0e074 (Install and run prettier)
-
     it('ranks 2 people with the same best the same', function () {
       let results: Result[] = [
         createResult(1, [1, 3, 5]),
@@ -266,13 +210,6 @@ describe('Ranking Helper', function () {
   });
 
   describe('Average, then single', function () {
-<<<<<<< HEAD
-=======
-    beforeEach(function () {
-      jasmine.addMatchers(customMatchers);
-    });
->>>>>>> 8b0e074 (Install and run prettier)
-
     it('ranks 2 people with the same average and the same best the same', function () {
       let results: Result[] = [
         createResult(1, [1, 3, 5, 7, 9]),
@@ -321,7 +258,6 @@ describe('Ranking Helper', function () {
 
     it('ranks a full result correctly', function () {
       let results: Result[] = [
-<<<<<<< HEAD
         createResult(1, [500, 600, 700, 800, 900]),  // AVG: 700, B: 500, R: 6=
         createResult(2, [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
         createResult(3, [400, 500, 600, 700, 800]),  // AVG: 600, B: 400, R: 2
@@ -337,23 +273,6 @@ describe('Ranking Helper', function () {
         createResult(13, [400, 600, 700, 800, 900]),  // AVG: 700, B: 400, R: 4=
         createResult(14, [2000, 4000]),               // AVG: null, B: 2000, R: 14 (didn't make cutoff)
         createResult(15, [-1, -1]),                   // AVG: null, B: DNF, R: 15 (didn't make cutoff)
-=======
-        createResult(1, [500, 600, 700, 800, 900]), // AVG: 700, B: 500, R: 6=
-        createResult(2, [400, 600, 700, 800, 900]), // AVG: 700, B: 400, R: 4=
-        createResult(3, [400, 500, 600, 700, 800]), // AVG: 600, B: 400, R: 2
-        createResult(4, [600, 700, 800, 900, 1000]), // AVG: 800, B: 600: R: 10=
-        createResult(5, [550, 650, 750, 850, 950]), // AVG: 750, B: 550, R: 9
-        createResult(6, [450, 550, 650, 750, 850]), // AVG: 650, B: 450, R: 3
-        createResult(7, [600, 600, 700, 800, 800]), // AVG: 700, B: 600, R: 8
-        createResult(8, [500, 600, 700, -1, -1]), // AVG: -1, B: 500, R: 12
-        createResult(9, [-1, -1, 700, 800, 900]), // AVG: -1, B: 700, R: 13
-        createResult(10, [-1, 600, 700, 800, 900]), // AVG: 800, B: 600, R: 10=
-        createResult(11, [510, 520, 530, 540, 550]), // AVG: 530, B: 510, R: 1
-        createResult(12, [500, 600, 700, 800, 900]), // AVG: 700, B: 500, R: 6=
-        createResult(13, [400, 600, 700, 800, 900]), // AVG: 700, B: 400, R: 4=
-        createResult(14, [2000, 4000]), // AVG: null, B: 2000, R: 14 (didn't make cutoff)
-        createResult(15, [-1, -1]), // AVG: null, B: DNF, R: 15 (didn't make cutoff)
->>>>>>> 8b0e074 (Install and run prettier)
       ];
 
       let rankedResults = rank(results, ['average', 'single']);
