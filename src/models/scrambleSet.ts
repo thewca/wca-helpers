@@ -1,4 +1,4 @@
-import { Scramble } from "./scramble";
+import { Scramble } from './scramble';
 
 export interface ScrambleSet {
   id: number;

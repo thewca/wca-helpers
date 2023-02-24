@@ -1,4 +1,4 @@
-import { EventId } from "./eventId";
+import { EventId } from './eventId';
 
 export interface Registration {
   wcaRegistrationId: number;

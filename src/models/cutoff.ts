@@ -1,4 +1,4 @@
-import { AttemptResult } from "./attemptResult";
+import { AttemptResult } from './attemptResult';
 
 export interface Cutoff {
   numberOfAttempts: number;
