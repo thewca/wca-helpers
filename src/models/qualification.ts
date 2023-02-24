@@ -1,21 +1,25 @@
 import { AttemptResult } from "./attemptResult";
+import { RankingType } from "./rankingType";
 
 interface RankingQualification {
-  when: string;
+  whenDate: string;
   type: 'ranking';
-  ranking: number;
+  resultType: RankingType;
+  level: number;
 }
 
-interface SingleQualification {
+interface AttemptResultQualification {
   when: string;
-  type: 'single';
-  single: AttemptResult;
+  type: 'attemptResult';
+  resultType: RankingType;
+  level: AttemptResult;
 }
 
-interface AverageQualification {
+interface AnyResultQualificiation {
   when: string;
-  type: 'average';
-  average: AttemptResult;
+  type: 'anyResult';
+  resultType: RankingType;
+  level: AttemptResult;
 }
 
-export type Qualification = RankingQualification | SingleQualification | AverageQualification;
+export type Qualification = RankingQualification | AttemptResultQualification | AnyResultQualificiation;
