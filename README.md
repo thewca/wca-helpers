@@ -22,7 +22,7 @@ npm install @wca/helpers --save
 
 Distributed under the GPL license. See `LICENSE` for more information.
 
-[https://github.com/thewca/wca-helpers](https://github.com/thewca/wca-helpers)
+[https://github.com/thewca/wca-helpers/blob/master/LICENSE](https://github.com/thewca/wca-helpers/blob/master/LICENSE)
 
 ## Contributing
 
