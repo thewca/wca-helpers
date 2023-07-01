@@ -1,8 +1,9 @@
-import { Avatar } from "./avatar";
-import { Registration } from "./registration";
-import { Assignment } from "./assignment";
-import { PersonalBest } from "./personalBest";
-import { Role } from "./role";
+import { Avatar } from './avatar';
+import { Registration } from './registration';
+import { Assignment } from './assignment';
+import { PersonalBest } from './personalBest';
+import { Role } from './role';
+import { Extension } from './extension';
 
 export type RegistrantId = number;
 
@@ -20,4 +21,5 @@ export interface Person {
   registration?: Registration | null;
   assignments?: Assignment[];
   personalBests?: PersonalBest[];
+  extensions: Extension[];
 }
