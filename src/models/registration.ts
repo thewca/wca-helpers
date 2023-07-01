@@ -1,4 +1,4 @@
-import { EventId } from "./eventId";
+import { EventId } from './eventId';
 
 export interface Registration {
   wcaRegistrationId: number;
@@ -6,4 +6,6 @@ export interface Registration {
   status: 'accepted' | 'pending' | 'deleted';
   guests?: number;
   comments?: string;
+  administrativeNotes?: string;
+  isCompeting: boolean;
 }
