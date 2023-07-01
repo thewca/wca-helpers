@@ -1,4 +1,4 @@
-import { AssignmentCode } from "./assignmentCode";
+import { AssignmentCode } from './assignmentCode';
 
 export interface Assignment {
   activityId: number;

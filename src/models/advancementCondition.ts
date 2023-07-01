@@ -1,4 +1,4 @@
-import { AttemptResult } from "./attemptResult";
+import { AttemptResult } from './attemptResult';
 
 interface RankingAdvancement {
   type: 'ranking';
@@ -15,4 +15,7 @@ interface ResultAdvancement {
   level: AttemptResult;
 }
 
-export type AdvancementCondition  = RankingAdvancement | PercentAdvancement | ResultAdvancement;
+export type AdvancementCondition =
+  | RankingAdvancement
+  | PercentAdvancement
+  | ResultAdvancement;

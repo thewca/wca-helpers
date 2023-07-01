@@ -1,5 +1,5 @@
-import { Extension } from "./extension";
-import { Room } from "./room";
+import { Extension } from './extension';
+import { Room } from './room';
 
 export interface Venue {
   id: number;

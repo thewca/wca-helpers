@@ -1,5 +1,5 @@
-import { Activity } from "./activity";
-import { Extension } from "./extension";
+import { Activity } from './activity';
+import { Extension } from './extension';
 
 export interface Room {
   id: number;

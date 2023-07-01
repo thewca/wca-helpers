@@ -28,6 +28,8 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
+      - name: Run format check
+        run: npm run format:check
       - name: Calculate coverage
         run: npm run test:coverage
       - name: Upload coverage

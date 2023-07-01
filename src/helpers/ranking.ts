@@ -1,23 +1,23 @@
-import { Result } from "../models/result";
-import { RankingType } from "../models/rankingType";
-import { Ao5, Mo3 } from "./average";
-import { AttemptResult } from "../models/attemptResult";
+import { Result } from '../models/result';
+import { RankingType } from '../models/rankingType';
+import { Ao5, Mo3 } from './average';
+import { AttemptResult } from '../models/attemptResult';
 
 export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
-  let averageCache: { [personId: number ]: AttemptResult | null} = {};
-  let bestCache: { [personId: number ]: number } = {};
-  
+  let averageCache: { [personId: number]: AttemptResult | null } = {};
+  let bestCache: { [personId: number]: number } = {};
+
   // first calc bests and averages where applicable
-  results.forEach(r => {
-    let plain = r.attempts.map(a => a.result);
+  results.forEach((r) => {
+    let plain = r.attempts.map((a) => a.result);
     if (rankingOrder.indexOf('average') > -1) {
-      let average = r.attempts.length === 5 ? Ao5(plain): Mo3(plain);
-      if (average as number < 0) {
+      let average = r.attempts.length === 5 ? Ao5(plain) : Mo3(plain);
+      if ((average as number) < 0) {
         average = Number.MAX_VALUE; // average can only be DNF, so no need to distinguish between DNF and DNS
       }
       averageCache[r.personId] = average;
     }
-    let valid = plain.map(x => parseInt(`${x}`, 10)).filter(x => x > 0);
+    let valid = plain.map((x) => parseInt(`${x}`, 10)).filter((x) => x > 0);
     if (valid.length > 0) {
       bestCache[r.personId] = Math.min(...valid);
     }
@@ -29,7 +29,8 @@ export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
       switch (rankingOrder[i]) {
         case 'average':
           if (averageCache[a.personId] && averageCache[b.personId]) {
-            if (averageCache[a.personId]! < averageCache[b.personId]!) return -1;
+            if (averageCache[a.personId]! < averageCache[b.personId]!)
+              return -1;
             if (averageCache[a.personId]! > averageCache[b.personId]!) return 1;
           }
           if (averageCache[a.personId] && !averageCache[b.personId]) return -1;
@@ -51,7 +52,7 @@ export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
     if (a.personId > b.personId) return 1;
     return 0;
   });
-  
+
   // then calculate and set rankings
   let currentRanking = 1;
   let numWithCurrentRanking = 0;
@@ -61,7 +62,7 @@ export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
       let sameRanking = true;
       let cpid = result.personId;
       let ppid = results[ix - 1].personId;
-      rankingOrder.forEach(ro => {
+      rankingOrder.forEach((ro) => {
         switch (ro) {
           case 'average':
             if (averageCache[cpid] !== averageCache[ppid]) sameRanking = false;
@@ -79,7 +80,7 @@ export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
     result.ranking = currentRanking;
     numWithCurrentRanking++;
   });
-  
+
   // now return the results ordered and with ranking applied
   return results;
 }

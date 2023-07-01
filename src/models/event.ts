@@ -1,7 +1,7 @@
-import { EventId } from "./eventId";
-import { Round } from "./round";
-import { Qualification } from "./qualification";
-import { Extension } from "./extension";
+import { EventId } from './eventId';
+import { Round } from './round';
+import { Qualification } from './qualification';
+import { Extension } from './extension';
 
 export interface Event {
   id: EventId;

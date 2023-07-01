@@ -1,6 +1,6 @@
-import { Attempt } from "./attempt";
-import { AttemptResult } from "./attemptResult";
-import { RegistrantId } from "./person";
+import { Attempt } from './attempt';
+import { AttemptResult } from './attemptResult';
+import { RegistrantId } from './person';
 
 export interface Result {
   personId: RegistrantId;

@@ -1,5 +1,5 @@
-import { AttemptResult } from "./attemptResult";
-import { RankingType } from "./rankingType";
+import { AttemptResult } from './attemptResult';
+import { RankingType } from './rankingType';
 
 interface RankingQualification {
   whenDate: string;
@@ -22,4 +22,7 @@ interface AnyResultQualificiation {
   level: AttemptResult;
 }
 
-export type Qualification = RankingQualification | AttemptResultQualification | AnyResultQualificiation;
+export type Qualification =
+  | RankingQualification
+  | AttemptResultQualification
+  | AnyResultQualificiation;

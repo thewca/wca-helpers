@@ -22,7 +22,7 @@ export function isDns(result: AttemptResult): boolean {
 export function isMultiResult(result: AttemptResult): boolean {
   // Formatted as a base 10 string, a multi result will always have 8 or 9 digits.
   // New style mbld has an implied 0 at the beginning which is not included in the length
-  return [9,10].indexOf(result.toString().length) > -1;
+  return [9, 10].indexOf(result.toString().length) > -1;
 }
 
 export function decodeMultiResult(result: AttemptResult): DecodedMultiResult {
@@ -33,7 +33,9 @@ export function decodeMultiResult(result: AttemptResult): DecodedMultiResult {
   if (r === -2) {
     return { isDns: true };
   }
-  return r.toString().length === 10 ? decodeOldMultiResult(result) : decodeNewMultiResult(result);
+  return r.toString().length === 10
+    ? decodeOldMultiResult(result)
+    : decodeNewMultiResult(result);
 }
 
 /**
@@ -90,23 +92,22 @@ function decodeOldMultiResult(result: AttemptResult): DecodedMultiResult {
   // Handles DNF and DNS
   if (result <= 0) return { solved: 0, attempted: 0, centiseconds: result };
 
-  
   const seconds = result % 1e5;
   const AA = Math.floor(result / 1e5) % 100;
-  const SS = (Math.floor(result / 1e7) % 100);
+  const SS = Math.floor(result / 1e7) % 100;
   const solved = 99 - SS;
   const res: DecodedMultiResult = { solved, attempted: AA };
   if (seconds < 99999) {
     res.centiseconds = seconds * 100;
   }
-  
+
   return res;
 }
 
 function decodeNewMultiResult(result: AttemptResult): DecodedMultiResult {
   // Handles DNF and DNS
   if (result <= 0) return { solved: 0, attempted: 0, centiseconds: result };
-  
+
   const missed = result % 100;
   const seconds = Math.floor(result / 100) % 1e5;
   const points = 99 - (Math.floor(result / 1e7) % 100);
@@ -116,6 +117,6 @@ function decodeNewMultiResult(result: AttemptResult): DecodedMultiResult {
   if (seconds < 99999) {
     res.centiseconds = seconds * 100;
   }
-  
+
   return res;
 }

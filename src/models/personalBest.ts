@@ -1,6 +1,6 @@
-import { EventId } from "./eventId";
-import { AttemptResult } from "./attemptResult";
-import { RankingType } from "./rankingType";
+import { EventId } from './eventId';
+import { AttemptResult } from './attemptResult';
+import { RankingType } from './rankingType';
 
 export interface PersonalBest {
   eventId: EventId;
