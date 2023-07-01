@@ -6,4 +6,6 @@ export interface Registration {
   status: 'accepted' | 'pending' | 'deleted';
   guests?: number;
   comments?: string;
+  administrativeNotes?: string;
+  isCompeting: boolean;
 }
