@@ -167,10 +167,22 @@ describe('Result helper', function () {
     ).toEqual('6 points');
   });
 
+  it('Correctly Formats 333 Result in Second', function () {
+    expect(
+      attemptResultToString({ attemptResult: 100, eventId: '333' }),
+    ).toEqual('1 second');
+  });
+
   it('Correctly Formats 333 Result in Seconds', function () {
     expect(
       attemptResultToString({ attemptResult: 3000, eventId: '333' }),
     ).toEqual('30 seconds');
+  });
+
+  it('Correctly Formats 333 Result in Minute', function () {
+    expect(
+      attemptResultToString({ attemptResult: 6000, eventId: '333' }),
+    ).toEqual('1 minute');
   });
 
   it('Correctly Formats 333 Result in Minutes', function () {
@@ -179,9 +191,15 @@ describe('Result helper', function () {
     ).toEqual('1 minute 30 seconds');
   });
 
-  it('Correctly Formats 333 Result in hours', function () {
+  it('Correctly Formats 333 Result in hour', function () {
     expect(
       attemptResultToString({ attemptResult: 360000, eventId: '333' }),
     ).toEqual('1 hour');
+  });
+
+  it('Correctly Formats 333 Result in hours', function () {
+    expect(
+      attemptResultToString({ attemptResult: 369000, eventId: '333' }),
+    ).toEqual('1 hour 1 minute 30 seconds');
   });
 });
