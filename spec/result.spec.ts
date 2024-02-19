@@ -149,26 +149,39 @@ describe('Result helper', function () {
     expect(decodeMultiResult(979999902)).toEqual({ solved: 4, attempted: 6 });
   });
 
-  it('Correctly Formats FMC Result', function (){
-    expect(attemptResultToString({ attemptResult: 24, eventId: '333fm' })).toEqual('24 moves')
-  })
+  it('Correctly Formats FMC Result', function () {
+    expect(
+      attemptResultToString({ attemptResult: 24, eventId: '333fm' }),
+    ).toEqual('24 moves');
+  });
 
-  it('Correctly Formats MBLD Result', function (){
-    expect(attemptResultToString({ attemptResult: encodeMultiResult({
-        solved: 6,
-        attempted: 6,
-      }), eventId: '333mbf' })).toEqual('6 points')
-  })
+  it('Correctly Formats MBLD Result', function () {
+    expect(
+      attemptResultToString({
+        attemptResult: encodeMultiResult({
+          solved: 6,
+          attempted: 6,
+        }),
+        eventId: '333mbf',
+      }),
+    ).toEqual('6 points');
+  });
 
-  it('Correctly Formats 333 Result in Seconds', function (){
-    expect(attemptResultToString({attemptResult: 3000, eventId: "333"})).toEqual("30 seconds")
-  })
+  it('Correctly Formats 333 Result in Seconds', function () {
+    expect(
+      attemptResultToString({ attemptResult: 3000, eventId: '333' }),
+    ).toEqual('30 seconds');
+  });
 
-  it('Correctly Formats 333 Result in Minutes', function (){
-    expect(attemptResultToString({attemptResult: 9000, eventId: "333"})).toEqual("1 minute 30 seconds")
-  })
+  it('Correctly Formats 333 Result in Minutes', function () {
+    expect(
+      attemptResultToString({ attemptResult: 9000, eventId: '333' }),
+    ).toEqual('1 minute 30 seconds');
+  });
 
-  it('Correctly Formats 333 Result in hours', function (){
-    expect(attemptResultToString({attemptResult: 360000, eventId: "333"})).toEqual("1 hour")
-  })
+  it('Correctly Formats 333 Result in hours', function () {
+    expect(
+      attemptResultToString({ attemptResult: 360000, eventId: '333' }),
+    ).toEqual('1 hour');
+  });
 });
