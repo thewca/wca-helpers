@@ -29,8 +29,8 @@ export function Ao5(results: AttemptResult[]): AttemptResult | null {
   let avg = Math.round(
     (comparableResults.reduce(
       (a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10),
-      0
-    ) as number) / 3
+      0,
+    ) as number) / 3,
   );
   if (avg > 60000) {
     avg = Math.round(avg / 100) * 100;
@@ -53,8 +53,8 @@ export function Mo3(results: AttemptResult[]): AttemptResult | null {
   let avg = Math.round(
     (results.reduce(
       (a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10),
-      0
-    ) as number) / 3
+      0,
+    ) as number) / 3,
   );
   if (avg > 60000) {
     avg = Math.round(avg / 100) * 100;
