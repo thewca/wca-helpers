@@ -1,7 +1,7 @@
-import { getEventResultType } from './event';
-import { EventId } from '../models';
-import { decodeMultiResult } from './result';
-
+/**
+ * Formats Centiseconds to a string like 3:30 or 0:43
+ * @param centiTime
+ */
 export function formatCentiseconds(centiTime: number): string {
   if (centiTime === -1) {
     return 'DNF';
@@ -18,6 +18,10 @@ export function formatCentiseconds(centiTime: number): string {
   return `${s}.${prefix(cs)}`;
 }
 
+/**
+ * Pads out a number with a 0 if it's under 10
+ * @param n
+ */
 function prefix(n: number): string {
   if (n < 10) {
     return `0${n}`;
@@ -38,6 +42,14 @@ interface PluralizeParams {
   };
 }
 
+/**
+ * Adds an s to a word if count is over 1.
+ * Takes options to pad the count and abbreviate the word with its
+ * first letter
+ * @param count
+ * @param word
+ * @param options
+ */
 function pluralize({ count, word, options = {} }: PluralizeParams) {
   const countStr =
     options.fixed && count % 1 > 0 ? count.toFixed(options.fixed) : count;
@@ -53,6 +65,12 @@ interface CentiSecondsToHumanReadableParams {
     short?: boolean;
   };
 }
+
+/**
+ * Converts Centiseconds to a human-readable string like "5:30 minutes"
+ * @param c
+ * @param options
+ */
 export function centiSecondsToHumanReadable({
   c,
   options = {},
