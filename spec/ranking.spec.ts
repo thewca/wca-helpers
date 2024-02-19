@@ -46,7 +46,7 @@ function createResult(personId: number, plain: number[]): Result {
     r.attempts.push({
       result: p,
       reconstruction: null,
-    })
+    }),
   );
   return r;
 }
