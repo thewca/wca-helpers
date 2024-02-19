@@ -128,12 +128,22 @@ interface AttemptResultToStringParams {
   eventId: EventId;
 }
 
+/**
+ * Returns the number of Points a Multi Result is worth
+ * @param mbValue
+ */
 function attemptResultToMbPoints(mbValue: number) {
   const { solved, attempted } = decodeMultiResult(mbValue);
   const missed = attempted - solved;
   return solved - missed;
 }
 
+/**
+ * Formats an Attempt Result for Cutoffs and Qualifications
+ * attemptResult can be a time in centiseconds, a number or a MBLD encoded string
+ * @param attemptResult
+ * @param eventId
+ */
 export function attemptResultToString({
   attemptResult,
   eventId,

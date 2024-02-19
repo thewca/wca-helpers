@@ -6,6 +6,7 @@ import {
   isMultiResultDnf,
   encodeMultiResult,
   formatMultiResult,
+  attemptResultToString,
 } from '../src/helpers/result';
 
 describe('Result helper', function () {
@@ -147,4 +148,6 @@ describe('Result helper', function () {
   it('Correctly decodes new style multi result', function () {
     expect(decodeMultiResult(979999902)).toEqual({ solved: 4, attempted: 6 });
   });
+
+  it('Correctly Formats Attempt Results ')
 });
