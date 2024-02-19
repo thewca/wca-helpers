@@ -50,7 +50,7 @@ interface PluralizeParams {
  * @param word
  * @param options
  */
-function pluralize({ count, word, options = {} }: PluralizeParams) {
+export function pluralize({ count, word, options = {} }: PluralizeParams) {
   const countStr =
     options.fixed && count % 1 > 0 ? count.toFixed(options.fixed) : count;
   const countDesc = options.abbreviate
