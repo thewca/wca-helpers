@@ -10,7 +10,7 @@ export interface ParsedActivityCode {
 
 export function parseActivityCode(activityCode: string): ParsedActivityCode {
   const [, e, r, g, a] = activityCode.match(
-    /^(\w+)(?:-r(\d+))?(?:-g(\d+))?(?:-a(\d+))?$/
+    /^(\w+)(?:-r(\d+))?(?:-g(\d+))?(?:-a(\d+))?$/,
   ) as any[];
   return {
     eventId: e,

@@ -34,7 +34,7 @@ export function getEventName(eventId: EventId): string {
 }
 
 export function getEventResultType(
-  eventId: EventId
+  eventId: EventId,
 ): 'time' | 'number' | 'multi' {
   return eventDataById[eventId].resultType;
 }

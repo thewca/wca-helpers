@@ -30,11 +30,11 @@ describe('Activity Helper', function () {
   describe('activityCodeToName', function () {
     it('Produces a readable representation of an activity code', function () {
       expect(activityCodeToName('444-r2-g5')).toEqual(
-        '4x4x4 Cube, Round 2, Group 5'
+        '4x4x4 Cube, Round 2, Group 5',
       );
       expect(activityCodeToName('clock')).toEqual('Clock');
       expect(activityCodeToName('333fm-r1-a2')).toEqual(
-        '3x3x3 Fewest Moves, Round 1, Attempt 2'
+        '3x3x3 Fewest Moves, Round 1, Attempt 2',
       );
     });
   });

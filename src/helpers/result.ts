@@ -77,13 +77,13 @@ export function formatMultiResult(result: DecodedMultiResult): string {
 }
 
 function isDnfMultiResult(
-  result: DecodedMultiResult
+  result: DecodedMultiResult,
 ): result is DnfMultiResult {
   return result.hasOwnProperty('isDnf');
 }
 
 function isDnsMultiResult(
-  result: DecodedMultiResult
+  result: DecodedMultiResult,
 ): result is DnsMultiResult {
   return result.hasOwnProperty('isDns');
 }
