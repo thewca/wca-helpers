@@ -1,4 +1,4 @@
-import { formatCentiseconds } from '../src/helpers/time';
+import { formatCentiseconds, pluralize } from '../src/helpers/time';
 
 describe('Time Helper', function () {
   it('Correctly formats DNF', function () {
@@ -51,5 +51,19 @@ describe('Time Helper', function () {
   it('Correctly formats times > 1 hour as in minutes', function () {
     expect(formatCentiseconds(360000)).toBe('60:00.00');
     expect(formatCentiseconds(360400)).toBe('60:04.00');
+  });
+
+  it('Correctly pluralizes', function () {
+    expect(pluralize({ count: 2, word: 'Cube' })).toEqual('2 Cubes');
+  });
+
+  it('Doesnt pluralize if the count is 1', function () {
+    expect(pluralize({ count: 1, word: 'Cube' })).toEqual('1 Cube');
+  });
+
+  it('Abbreviates Correctly', function () {
+    expect(
+      pluralize({ count: 1, word: 'hour', options: { abbreviate: true } }),
+    ).toEqual('1h');
   });
 });
