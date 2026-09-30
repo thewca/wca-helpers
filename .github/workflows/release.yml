@@ -42,7 +42,8 @@ jobs:
           VERSION: ${{ steps.release.outputs.version }}
         run: |
           if [[ "$VERSION" == *-* ]]; then
-            echo "tag=$(node -p \"process.env.VERSION.split('-')[1].split('.')[0]\")" >> "$GITHUB_OUTPUT"
+            tag="$(node -p 'process.env.VERSION.split("-")[1].split(".")[0]')"
+            echo "tag=$tag" >> "$GITHUB_OUTPUT"
           else
             echo "tag=latest" >> "$GITHUB_OUTPUT"
           fi
