@@ -24,27 +24,13 @@ Releases are managed by [Release Please](https://github.com/googleapis/release-p
 
 Use Conventional Commit prefixes when merging changes to `master`:
 
-- `fix:` creates a patch release, for example `1.1.7 -> 1.1.8`.
-- `feat:` creates a minor release, for example `1.1.7 -> 1.2.0`.
-- `feat!:`, `fix!:`, or a `BREAKING CHANGE:` footer creates a major release, for example `1.1.7 -> 2.0.0`.
+- `fix:` creates a patch release.
+- `feat:` creates a minor release.
+- `feat!:`, `fix!:`, or a `BREAKING CHANGE:` footer creates a major release.
 
-Release Please keeps a release PR up to date with the next version, `package.json`, `package-lock.json`, and `CHANGELOG.md`. Merge that release PR when the release should be published. The workflow then creates the Git tag and GitHub Release and publishes the package to npm.
+Release Please keeps a release PR up to date with the next version, changelog, and package version files. Merge that release PR when the release should be published.
 
 Do not manually bump the package version for normal releases.
-
-### Prereleases
-
-For an occasional prerelease, use Release Please's `Release-As:` commit footer to request the exact prerelease version:
-
-```text
-feat: add WCIF v2 support
-
-Release-As: 1.2.0-beta.1
-```
-
-To publish another beta, request the next version explicitly, for example `Release-As: 1.2.0-beta.2`. When the prerelease is ready to become stable, request the stable version, for example `Release-As: 1.2.0`.
-
-Prerelease GitHub Releases are marked as prereleases. npm uses the prerelease identifier as the dist-tag, so `1.2.0-beta.1` is published under `beta` while stable versions are published under `latest`.
 
 ## Contributing
 
