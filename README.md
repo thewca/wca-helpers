@@ -18,14 +18,6 @@ npm install @wca/helpers --save
 
 ## Development setup
 
-```sh
-git clone
-cd wca-helpers
-npm install
-npm run build
-npm test
-```
-
 ## Release process
 
 Releases are managed by [Release Please](https://github.com/googleapis/release-please).
