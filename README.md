@@ -28,37 +28,37 @@ npm test
 
 ## Release process
 
-Releases are driven by the version in `package.json`. Create a PR that changes the version, including the matching `package-lock.json` update, then merge it to `master`. The release workflow tests and builds the package, publishes that exact version to npm, creates a `v<version>` tag, and creates a GitHub release.
+Releases are managed by [Release Please](https://github.com/googleapis/release-please).
 
-Use npm's version command without creating a local Git tag:
+Use Conventional Commit prefixes when merging changes to `master`:
 
-```sh
-# Stable releases
-npm version patch --no-git-tag-version
-npm version minor --no-git-tag-version
-npm version major --no-git-tag-version
+- `fix:` creates a patch release, for example `1.1.7 -> 1.1.8`.
+- `feat:` creates a minor release, for example `1.1.7 -> 1.2.0`.
+- `feat!:`, `fix!:`, or a `BREAKING CHANGE:` footer creates a major release, for example `1.1.7 -> 2.0.0`.
 
-# Start a beta prerelease series
-npm version prepatch --preid=beta --no-git-tag-version
-npm version preminor --preid=beta --no-git-tag-version
-npm version premajor --preid=beta --no-git-tag-version
+Release Please keeps a release PR up to date with the next version, `package.json`, `package-lock.json`, and `CHANGELOG.md`. Merge that release PR when the release should be published. The workflow then creates the Git tag and GitHub Release and publishes the package to npm.
 
-# Advance an existing beta
-npm version prerelease --preid=beta --no-git-tag-version
+Do not manually bump the package version for normal releases.
+
+### Prereleases
+
+For an occasional prerelease, use Release Please's `Release-As:` commit footer to request the exact prerelease version:
+
+```text
+feat: add WCIF v2 support
+
+Release-As: 1.2.0-beta.1
 ```
 
-Prerelease identifiers become npm dist-tags automatically. For example, `1.2.0-beta.1` is published with the `beta` tag and is marked as a prerelease on GitHub. The same works for identifiers such as `alpha` and `rc`. Stable versions are published with the `latest` npm tag.
+To publish another beta, request the next version explicitly, for example `Release-As: 1.2.0-beta.2`. When the prerelease is ready to become stable, request the stable version, for example `Release-As: 1.2.0`.
 
-Examples:
+Prerelease GitHub Releases are marked as prereleases. npm uses the prerelease identifier as the dist-tag, so `1.2.0-beta.1` is published under `beta` while stable versions are published under `latest`.
 
-- `1.1.7 -> 1.1.8`: patch release
-- `1.1.7 -> 1.2.0`: minor release
-- `1.1.7 -> 2.0.0`: major release
-- `1.1.7 -> 1.2.0-beta.0`: first beta for 1.2.0
-- `1.2.0-beta.0 -> 1.2.0-beta.1`: next beta
-- `1.2.0-beta.1 -> 1.2.0`: stable release
+### Repository setup
 
-The npm package must have GitHub Actions trusted publishing configured for `thewca/wca-helpers` and `.github/workflows/release.yml`.
+npm Trusted Publishing should trust the GitHub Actions workflow `.github/workflows/release.yml` in `thewca/wca-helpers`.
+
+The workflow can use GitHub's built-in token, but Release Please PRs created with that token do not trigger other GitHub Actions workflows. To have the normal PR test workflow run on Release Please PRs, configure a `RELEASE_PLEASE_TOKEN` secret with a GitHub token that can write repository contents, pull requests, and issues.
 
 ## Contributing
 
