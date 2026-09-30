@@ -54,12 +54,6 @@ To publish another beta, request the next version explicitly, for example `Relea
 
 Prerelease GitHub Releases are marked as prereleases. npm uses the prerelease identifier as the dist-tag, so `1.2.0-beta.1` is published under `beta` while stable versions are published under `latest`.
 
-### Repository setup
-
-npm Trusted Publishing should trust the GitHub Actions workflow `.github/workflows/release.yml` in `thewca/wca-helpers`.
-
-The workflow can use GitHub's built-in token, but Release Please PRs created with that token do not trigger other GitHub Actions workflows. To have the normal PR test workflow run on Release Please PRs, configure a `RELEASE_PLEASE_TOKEN` secret with a GitHub token that can write repository contents, pull requests, and issues.
-
 ## Contributing
 
 1. Fork it (<https://github.com/thewca/wca-helpers/fork>)
