@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.9](https://github.com/thewca/wca-helpers/compare/v1.1.8...v1.1.9) (2026-09-30)
+
+
+### Bug Fixes
+
+* quote npm dist-tag expression ([#53](https://github.com/thewca/wca-helpers/issues/53)) ([0e70f69](https://github.com/thewca/wca-helpers/commit/0e70f6907cabf2602c8f757da593b3db43357355))
+
 ## [1.1.8](https://github.com/thewca/wca-helpers/compare/v1.1.7...v1.1.8) (2026-09-30)
 
 
