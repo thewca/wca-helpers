@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - beta
 
 permissions:
   contents: write
@@ -21,8 +20,7 @@ jobs:
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
-          target-branch: ${{ github.ref_name }}
-          config-file: ${{ github.ref_name == 'beta' && 'release-please-beta-config.json' || 'release-please-config.json' }}
+          config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
       - name: Check out release
@@ -40,8 +38,19 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         run: npm ci
 
+      - name: Choose npm dist-tag
+        if: ${{ steps.release.outputs.release_created }}
+        id: npm
+        shell: bash
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          if [[ "$VERSION" == *-* ]]; then
+            echo "tag=$(node -p \"process.env.VERSION.split('-')[1].split('.')[0]\")" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to npm
         if: ${{ steps.release.outputs.release_created }}
-        env:
-          NPM_TAG: ${{ github.ref_name == 'beta' && 'beta' || 'latest' }}
-        run: npm publish --access public --provenance --tag "$NPM_TAG"
+        run: npm publish --access public --provenance --tag "${{ steps.npm.outputs.tag }}"
