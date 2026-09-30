@@ -18,11 +18,19 @@ npm install @wca/helpers --save
 
 ## Development setup
 
-## Meta
+## Release process
 
-Distributed under the GPL license. See `LICENSE` for more information.
+Releases are managed by [Release Please](https://github.com/googleapis/release-please).
 
-[https://github.com/thewca/wca-helpers](https://github.com/thewca/wca-helpers)
+Use Conventional Commit prefixes when merging changes to `master`:
+
+- `fix:` creates a patch release.
+- `feat:` creates a minor release.
+- `feat!:`, `fix!:`, or a `BREAKING CHANGE:` footer creates a major release.
+
+Release Please keeps a release PR up to date with the next version, changelog, and package version files. Merge that release PR when the release should be published.
+
+Do not manually bump the package version for normal releases.
 
 ## Contributing
 
@@ -31,3 +39,9 @@ Distributed under the GPL license. See `LICENSE` for more information.
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+## Meta
+
+Distributed under the GPL license. See `LICENSE` for more information.
+
+[https://github.com/thewca/wca-helpers](https://github.com/thewca/wca-helpers)

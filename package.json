@@ -19,7 +19,6 @@
     "format:check": "prettier --check \"**/*.{ts,js}\"",
     "build": "tsc",
     "preversion": "npm test",
-    "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run build"
   },
   "repository": {
