@@ -1,6 +1,6 @@
 {
   "name": "@wca/helpers",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Helpers and class definitions for WCA and WCIF",
   "keywords": [
     "wca",
@@ -19,7 +19,6 @@
     "format:check": "prettier --check \"**/*.{ts,js}\"",
     "build": "tsc",
     "preversion": "npm test",
-    "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run build"
   },
   "repository": {
