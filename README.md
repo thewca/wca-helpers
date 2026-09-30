@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/thewca/wca-helpers/badge.svg?branch=master)](https://coveralls.io/github/thewca/wca-helpers?branch=master)
 [![npm version](https://badge.fury.io/js/%40wca%2Fhelpers.svg)](https://badge.fury.io/js/%40wca%2Fhelpers)
 
-This package contains typescript interfaces for the different classes used in WCIF, as well as a library of helper functions to help you deal with WCA data, such as calculating averages and en/de-coding multi blind results.
+This package contains TypeScript interfaces for the different classes used in WCIF, as well as a library of helper functions to help you deal with WCA data, such as calculating averages and en/de-coding multi blind results.
 
 ## Installation
 
@@ -25,11 +25,19 @@ npm install @wca/helpers --save
 Run `npm run test:wcif-v2` to check ten live WCIF v2 responses against the
 TypeScript models. You can pass competition IDs to check a different set.
 
-## Meta
+## Release process
 
-Distributed under the GPL license. See `LICENSE` for more information.
+Releases are managed by [Release Please](https://github.com/googleapis/release-please).
 
-[https://github.com/thewca/wca-helpers](https://github.com/thewca/wca-helpers)
+Use Conventional Commit prefixes when merging changes to `master`:
+
+- `fix:` creates a patch release.
+- `feat:` creates a minor release.
+- `feat!:`, `fix!:`, or a `BREAKING CHANGE:` footer creates a major release.
+
+Release Please keeps a release PR up to date with the next version, changelog, and package version files. Merge that release PR when the release should be published.
+
+Do not manually bump the package version for normal releases.
 
 ## Contributing
 
@@ -38,3 +46,9 @@ Distributed under the GPL license. See `LICENSE` for more information.
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+## Meta
+
+Distributed under the GPL license. See `LICENSE` for more information.
+
+[https://github.com/thewca/wca-helpers](https://github.com/thewca/wca-helpers)

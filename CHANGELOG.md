@@ -5,22 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v2.0.0](https://github.com/thewca/wca-helpers/tree/v2.0.0)
+## [1.1.9](https://github.com/thewca/wca-helpers/compare/v1.1.8...v1.1.9) (2026-09-30)
 
-### Added
 
-* WCIF 2 result conditions and participation rulesets
-* The Head-to-Head round format
+### Bug Fixes
 
-### Changed
+* quote npm dist-tag expression ([#53](https://github.com/thewca/wca-helpers/issues/53)) ([0e70f69](https://github.com/thewca/wca-helpers/commit/0e70f6907cabf2602c8f757da593b3db43357355))
 
-* Updated all model fields and helpers for WCIF 2
-* Changed `Competition.series` to `Series | null`
+## [1.1.8](https://github.com/thewca/wca-helpers/compare/v1.1.7...v1.1.8) (2026-09-30)
 
-### Removed
 
-* WCIF 1 advancement conditions
-* The `AttemptResult` type, which WCIF 2 renamed to `ResultValue`
+### Bug Fixes
+
+* correct TypeScript capitalization in README ([#51](https://github.com/thewca/wca-helpers/issues/51)) ([1f4b082](https://github.com/thewca/wca-helpers/commit/1f4b0821105f978a3139b46d611a1fa2e168eef9))
 
 ## [v1.1.1](https://github.com/thewca/wca-helpers/tree/v1.1.1) (2022-05-12)
 
