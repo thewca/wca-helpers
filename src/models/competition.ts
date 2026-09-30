@@ -13,7 +13,7 @@ export interface Competition {
   persons: Person[];
   events: Event[];
   schedule: Schedule;
-  series: Series[];
+  series: Series | null;
   competitorLimit: number | null;
   extensions: Extension[];
   registrationInfo: RegistrationInfo;

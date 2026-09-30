@@ -1,10 +1,10 @@
 import { EventId } from './eventId';
-import { AttemptResult } from './attemptResult';
 import { RankingType } from './rankingType';
+import { ResultValue } from './resultValue';
 
 export interface PersonalBest {
   eventId: EventId;
-  best: AttemptResult;
+  value: ResultValue;
   worldRanking: number;
   continentalRanking: number;
   nationalRanking: number;

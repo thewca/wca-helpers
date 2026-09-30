@@ -14,6 +14,8 @@ export function getFormatName(format: RoundFormat): string {
       return 'Average of 5';
     case 'm':
       return 'Mean of 3';
+    case 'h':
+      return 'Head-to-Head';
   }
 }
 
@@ -23,6 +25,7 @@ export function getFormatRanking(format: RoundFormat): RankingType[] {
     case '2':
     case '3':
     case '5':
+    case 'h':
       return ['single'];
     case 'a':
     case 'm':
@@ -44,6 +47,8 @@ export function getFormatExpectedSolves(format: RoundFormat): number {
       return 5;
     case 'm':
       return 3;
+    case 'h':
+      return 0;
   }
 }
 
@@ -53,6 +58,7 @@ export function getFormatTrimBest(format: RoundFormat): number {
     case '2':
     case '3':
     case 'm':
+    case 'h':
       return 0;
     case 'a':
     case '5':
@@ -66,6 +72,7 @@ export function getFormatTrimWorst(format: RoundFormat): number {
     case '2':
     case '3':
     case 'm':
+    case 'h':
       return 0;
     case 'a':
     case '5':

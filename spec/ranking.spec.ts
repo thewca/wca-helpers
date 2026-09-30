@@ -44,7 +44,7 @@ function createResult(personId: number, plain: number[]): Result {
   };
   plain.forEach((p) =>
     r.attempts.push({
-      result: p,
+      value: p,
       reconstruction: null,
     }),
   );

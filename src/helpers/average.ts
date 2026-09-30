@@ -1,7 +1,7 @@
-import { AttemptResult } from '../models/attemptResult';
+import { ResultValue } from '../models/resultValue';
 import { isMultiResult } from './result';
 
-export function Ao5(results: AttemptResult[]): AttemptResult | null {
+export function Ao5(results: ResultValue[]): ResultValue | null {
   results = results.filter((r) => r !== 0);
 
   if (results.some(isMultiResult)) return null; // cannot calculate average or mean for MBLD
@@ -38,7 +38,7 @@ export function Ao5(results: AttemptResult[]): AttemptResult | null {
   return avg;
 }
 
-export function Mo3(results: AttemptResult[]): AttemptResult | null {
+export function Mo3(results: ResultValue[]): ResultValue | null {
   results = results.filter((r) => r !== 0); // remove non-existing attempts
 
   if (results.some(isMultiResult)) return null; // cannot calculate average or mean for MBLD
