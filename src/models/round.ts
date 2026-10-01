@@ -1,7 +1,7 @@
 import { RoundFormat } from './roundFormat';
 import { TimeLimit } from './timeLimit';
 import { Cutoff } from './cutoff';
-import { AdvancementCondition } from './advancementCondition';
+import { ParticipationRuleset } from './participationRuleset';
 import { Result } from './result';
 import { ScrambleSet } from './scrambleSet';
 import { Extension } from './extension';
@@ -9,10 +9,11 @@ import { ActivityCode } from './activity';
 
 export interface Round {
   id: ActivityCode;
+  linkedRounds: string[] | null;
   format: RoundFormat;
   timeLimit: TimeLimit | null;
   cutoff: Cutoff | null;
-  advancementCondition: AdvancementCondition | null;
+  participationRuleset: ParticipationRuleset;
   results: Result[];
   scrambleSetCount?: number;
   scrambleSets?: ScrambleSet[];

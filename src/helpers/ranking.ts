@@ -1,15 +1,17 @@
 import { Result } from '../models/result';
 import { RankingType } from '../models/rankingType';
 import { Ao5, Mo3 } from './average';
-import { AttemptResult } from '../models/attemptResult';
+import { ResultValue } from '../models/resultValue';
 
 export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
-  let averageCache: { [personId: number]: AttemptResult | null } = {};
+  if (rankingOrder.length === 0) return results;
+
+  let averageCache: { [personId: number]: ResultValue | null } = {};
   let bestCache: { [personId: number]: number } = {};
 
   // first calc bests and averages where applicable
   results.forEach((r) => {
-    let plain = r.attempts.map((a) => a.result);
+    let plain = r.attempts.map((a) => a.value);
     if (rankingOrder.indexOf('average') > -1) {
       let average = r.attempts.length === 5 ? Ao5(plain) : Mo3(plain);
       if ((average as number) < 0) {

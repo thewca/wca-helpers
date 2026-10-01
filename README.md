@@ -14,9 +14,16 @@ This package contains TypeScript interfaces for the different classes used in WC
 npm install @wca/helpers --save
 ```
 
+## WCIF version compatibility
+
+`@wca/helpers` 2.x targets WCIF 2.x. Use `@wca/helpers` 1.x for WCIF 1.x.
+
 ## Usage example
 
 ## Development setup
+
+Run `npm run test:wcif-v2` to check ten live WCIF v2 responses against the
+TypeScript models. You can pass competition IDs to check a different set.
 
 ## Release process
 

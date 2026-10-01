@@ -1,6 +1,6 @@
-import { AttemptResult } from './attemptResult';
+import { ResultValue } from './resultValue';
 
 export interface Cutoff {
   numberOfAttempts: number;
-  attemptResult: AttemptResult;
+  resultValue: ResultValue;
 }
