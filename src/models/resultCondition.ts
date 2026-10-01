@@ -24,6 +24,4 @@ export type ResultCondition =
   | RankingCondition
   | PercentCondition;
 
-export type QualificationResultCondition =
-  | ResultAchievedCondition
-  | RankingCondition;
+export type QualificationResultCondition = ResultCondition | null;

@@ -52,6 +52,20 @@ function createResult(personId: number, plain: number[]): Result {
 }
 
 describe('Ranking Helper', function () {
+  it('keeps the supplied order and rankings when no ranking order exists', function () {
+    let results: Result[] = [
+      { ...createResult(2, [900]), ranking: 1 },
+      { ...createResult(1, [800]), ranking: 2 },
+    ];
+
+    let rankedResults = rank(results, []);
+
+    expect(rankedResults[0].personId).toBe(2);
+    expect(rankedResults[0]).toHaveRanking(1);
+    expect(rankedResults[1].personId).toBe(1);
+    expect(rankedResults[1]).toHaveRanking(2);
+  });
+
   describe('Average only', function () {
     describe('Ao5', function () {
       it('ranks 2 people with the same average the same', function () {

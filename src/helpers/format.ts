@@ -25,8 +25,9 @@ export function getFormatRanking(format: RoundFormat): RankingType[] {
     case '2':
     case '3':
     case '5':
-    case 'h':
       return ['single'];
+    case 'h':
+      return [];
     case 'a':
     case 'm':
       return ['average', 'single'];

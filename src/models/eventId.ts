@@ -15,7 +15,8 @@ export type CurrentEventId =
   | 'sq1' // other puzzles
   | '444bf'
   | '555bf'
-  | '333mbf'; // big and multiblind
+  | '333mbf' // big and multiblind
+  | 'fto';
 
 export type DeprecatedEventId = 'magic' | 'mmagic' | '333mbo' | '333ft';
 

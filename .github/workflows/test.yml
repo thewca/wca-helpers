@@ -30,6 +30,8 @@ jobs:
         run: npm test
       - name: Check types
         run: npm run typecheck
+      - name: Check the WCIF v2 contract
+        run: npm run test:wcif-v2
       - name: Run format check
         run: npm run format:check
       - name: Calculate coverage

@@ -4,6 +4,8 @@ import { Ao5, Mo3 } from './average';
 import { ResultValue } from '../models/resultValue';
 
 export function rank(results: Result[], rankingOrder: RankingType[]): Result[] {
+  if (rankingOrder.length === 0) return results;
+
   let averageCache: { [personId: number]: ResultValue | null } = {};
   let bestCache: { [personId: number]: number } = {};
 
