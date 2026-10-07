@@ -1,5 +1,7 @@
 import { AttemptResult } from '../models/attemptResult';
-import { formatCentiseconds } from './time';
+import { centiSecondsToHumanReadable, formatCentiseconds } from './time';
+import { EventId } from '../models';
+import { getEventResultType } from './event';
 
 type DnfMultiResult = { isDnf: true };
 type DnsMultiResult = { isDns: true };
@@ -119,4 +121,39 @@ function decodeNewMultiResult(result: AttemptResult): DecodedMultiResult {
   }
 
   return res;
+}
+
+interface AttemptResultToStringParams {
+  attemptResult: number;
+  eventId: EventId;
+}
+
+/**
+ * Returns the number of Points a Multi Result is worth
+ * @param mbValue
+ */
+function attemptResultToMbPoints(mbValue: number) {
+  const { solved, attempted } = decodeMultiResult(mbValue);
+  const missed = attempted - solved;
+  return solved - missed;
+}
+
+/**
+ * Formats an Attempt Result for Cutoffs and Qualifications
+ * attemptResult can be a time in centiseconds, a number or a MBLD encoded string
+ * @param attemptResult
+ * @param eventId
+ */
+export function attemptResultToString({
+  attemptResult,
+  eventId,
+}: AttemptResultToStringParams) {
+  const type = getEventResultType(eventId);
+  if (type === 'time') {
+    return centiSecondsToHumanReadable({ c: attemptResult });
+  }
+  if (type === 'number') {
+    return `${attemptResult} moves`;
+  }
+  return `${attemptResultToMbPoints(attemptResult)} points`;
 }
