@@ -1,4 +1,4 @@
-import { AttemptResult } from '../models/attemptResult';
+import { ResultValue } from '../models/resultValue';
 import { formatCentiseconds } from './time';
 
 type DnfMultiResult = { isDnf: true };
@@ -11,21 +11,21 @@ type ValidMultiResult = {
 
 type DecodedMultiResult = DnfMultiResult | DnsMultiResult | ValidMultiResult;
 
-export function isDnf(result: AttemptResult): boolean {
+export function isDnf(result: ResultValue): boolean {
   return result === -1;
 }
 
-export function isDns(result: AttemptResult): boolean {
+export function isDns(result: ResultValue): boolean {
   return result === -2;
 }
 
-export function isMultiResult(result: AttemptResult): boolean {
+export function isMultiResult(result: ResultValue): boolean {
   // Formatted as a base 10 string, a multi result will always have 8 or 9 digits.
   // New style mbld has an implied 0 at the beginning which is not included in the length
   return [9, 10].indexOf(result.toString().length) > -1;
 }
 
-export function decodeMultiResult(result: AttemptResult): DecodedMultiResult {
+export function decodeMultiResult(result: ResultValue): DecodedMultiResult {
   let r = result;
   if (r === -1) {
     return { isDnf: true };
@@ -88,7 +88,7 @@ function isDnsMultiResult(
   return result.hasOwnProperty('isDns');
 }
 
-function decodeOldMultiResult(result: AttemptResult): DecodedMultiResult {
+function decodeOldMultiResult(result: ResultValue): DecodedMultiResult {
   // Handles DNF and DNS
   if (result <= 0) return { solved: 0, attempted: 0, centiseconds: result };
 
@@ -104,7 +104,7 @@ function decodeOldMultiResult(result: AttemptResult): DecodedMultiResult {
   return res;
 }
 
-function decodeNewMultiResult(result: AttemptResult): DecodedMultiResult {
+function decodeNewMultiResult(result: ResultValue): DecodedMultiResult {
   // Handles DNF and DNS
   if (result <= 0) return { solved: 0, attempted: 0, centiseconds: result };
 

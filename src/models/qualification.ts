@@ -1,28 +1,7 @@
-import { AttemptResult } from './attemptResult';
-import { RankingType } from './rankingType';
+import { QualificationResultCondition } from './resultCondition';
 
-interface RankingQualification {
-  whenDate: string;
-  type: 'ranking';
-  resultType: RankingType;
-  level: number;
+export interface Qualification {
+  earliestResultDate: string | null;
+  latestResultDate: string;
+  resultCondition: QualificationResultCondition;
 }
-
-interface AttemptResultQualification {
-  when: string;
-  type: 'attemptResult';
-  resultType: RankingType;
-  level: AttemptResult;
-}
-
-interface AnyResultQualificiation {
-  when: string;
-  type: 'anyResult';
-  resultType: RankingType;
-  level: AttemptResult;
-}
-
-export type Qualification =
-  | RankingQualification
-  | AttemptResultQualification
-  | AnyResultQualificiation;

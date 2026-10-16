@@ -1,11 +1,11 @@
 import { Attempt } from './attempt';
-import { AttemptResult } from './attemptResult';
 import { RegistrantId } from './person';
+import { ResultValue } from './resultValue';
 
 export interface Result {
   personId: RegistrantId;
   ranking: number | null;
   attempts: Attempt[];
-  best: AttemptResult;
-  average: AttemptResult;
+  best: ResultValue;
+  average: ResultValue;
 }

@@ -8,7 +8,7 @@ import { Extension } from './extension';
 export type RegistrantId = number;
 
 export interface Person {
-  registrantId: RegistrantId;
+  registrantId: RegistrantId | null;
   name: string;
   wcaUserId: number;
   wcaId?: string | null;
