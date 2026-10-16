@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/thewca/wca-helpers/compare/v1.1.9...v2.0.0) (2026-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add WCIF v2 support ([#50](https://github.com/thewca/wca-helpers/issues/50))
+
+### Features
+
+* Add WCIF v2 support ([#50](https://github.com/thewca/wca-helpers/issues/50)) ([383961b](https://github.com/thewca/wca-helpers/commit/383961b3d0b5df3920851c1409bab7fe9f9dd987))
+
 ## [1.1.9](https://github.com/thewca/wca-helpers/compare/v1.1.8...v1.1.9) (2026-09-30)
 
 
