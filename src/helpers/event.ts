@@ -24,6 +24,7 @@ const eventDataById: { [key: string]: EventData } = {
   '444bf': { resultType: 'time', name: '4x4x4 Blindfolded' },
   '555bf': { resultType: 'time', name: '5x5x5 Blindfolded' },
   '333mbf': { resultType: 'multi', name: '3x3x3 Multi-Blind' },
+  fto: { resultType: 'time', name: 'Face Turning Octahedron' },
   magic: { resultType: 'time', name: 'Magic' },
   mmagic: { resultType: 'time', name: 'Master Magic' },
   '333mbo': { resultType: 'multi', name: '3x3x3 Multi-Blind Old Style' },

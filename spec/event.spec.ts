@@ -6,6 +6,7 @@ describe('Event Helper', function () {
       expect(getEventName('333')).toEqual('3x3x3 Cube');
       expect(getEventName('333mbf')).toEqual('3x3x3 Multi-Blind');
       expect(getEventName('mmagic')).toEqual('Master Magic');
+      expect(getEventName('fto')).toEqual('Face Turning Octahedron');
     });
   });
 
@@ -16,6 +17,7 @@ describe('Event Helper', function () {
       expect(getEventResultType('333fm')).toEqual('number');
       expect(getEventResultType('333mbf')).toEqual('multi');
       expect(getEventResultType('333mbo')).toEqual('multi');
+      expect(getEventResultType('fto')).toEqual('time');
     });
   });
 });

@@ -36,6 +36,9 @@ describe('Activity Helper', function () {
       expect(activityCodeToName('333fm-r1-a2')).toEqual(
         '3x3x3 Fewest Moves, Round 1, Attempt 2',
       );
+      expect(activityCodeToName('fto-r1-g1')).toEqual(
+        'Face Turning Octahedron, Round 1, Group 1',
+      );
     });
   });
 });
