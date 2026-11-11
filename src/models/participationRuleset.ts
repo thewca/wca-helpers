@@ -7,13 +7,13 @@ export interface RegistrationsParticipationSource {
 export interface RoundParticipationSource {
   type: 'round';
   roundId: string;
-  resultCondition: ResultCondition | null;
+  resultCondition: ResultCondition;
 }
 
 export interface LinkedRoundsParticipationSource {
   type: 'linkedRounds';
   roundIds: string[];
-  resultCondition: ResultCondition | null;
+  resultCondition: ResultCondition;
 }
 
 export type ParticipationSource =
@@ -23,7 +23,7 @@ export type ParticipationSource =
 
 export interface ReservedPlaces {
   nationalities: string[];
-  reservations: number;
+  count: number;
 }
 
 export interface ParticipationRuleset {
