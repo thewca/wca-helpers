@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1](https://github.com/thewca/wca-helpers/compare/v2.0.0...v2.0.1) (2026-11-11)
+
+
+### Bug Fixes
+
+* add FTO to event data so name lookups don't throw ([#57](https://github.com/thewca/wca-helpers/issues/57)) ([cfefdae](https://github.com/thewca/wca-helpers/commit/cfefdae3b3f4755d580d10e236dabe493ba12baa))
+
 ## [2.0.0](https://github.com/thewca/wca-helpers/compare/v1.1.9...v2.0.0) (2026-10-16)
 
 
