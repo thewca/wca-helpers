@@ -27,3 +27,4 @@ export * from './series';
 export * from './schedule';
 export * from './wcaId';
 export * from './rankingType';
+export * from './extension';
